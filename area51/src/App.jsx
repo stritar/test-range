@@ -22,10 +22,7 @@ export default function App() {
           alignItems: "center",
         }}
       >
-        <FigmaHeading />
-        <TestTile />
-        <FigmaRectangle width="320px" />
-        <FigmaPill />
+
       </div>
     </div>
   );
