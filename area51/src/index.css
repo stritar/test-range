@@ -1,7 +1,165 @@
+@font-face {
+  font-family: "campton";
+  src: url("/fonts/campton/Campton-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "campton";
+  src: url("/fonts/campton/Campton-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "campton";
+  src: url("/fonts/campton/Campton-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Core: border radius */
+  --core-border-radius--lg: 16px;
+  --core-border-radius--md: 12px;
+  --core-border-radius--sm: 8px;
+  --core-border-radius--xl: 32px;
+  --core-border-radius--xxl: 99999px;
+
+  /* Core: neutral palette */
+  --core-color-neutral--0000: rgb(255 255 255);
+  --core-color-neutral--0050: rgb(248 249 251);
+  --core-color-neutral--0100: rgb(240 241 245);
+  --core-color-neutral--0200: rgb(229 231 235);
+  --core-color-neutral--0300: rgb(215 217 223);
+  --core-color-neutral--0400: rgb(205 207 214);
+  --core-color-neutral--0500: rgb(195 198 207);
+  --core-color-neutral--0600: rgb(184 186 198);
+  --core-color-neutral--0700: rgb(174 177 190);
+  --core-color-neutral--0800: rgb(165 167 183);
+  --core-color-neutral--0900: rgb(155 158 174);
+  --core-color-neutral--1000: rgb(129 134 154);
+  --core-color-neutral--1100: rgb(105 110 132);
+  --core-color-neutral--1200: rgb(61 63 78);
+  --core-color-neutral--1300: rgb(36 38 53);
+  --core-color-neutral--1400: rgb(10 12 27);
+
+  /* Core: primary palette */
+  --core-color-primary--0000: rgb(255 255 255);
+  --core-color-primary--0050: rgb(225 228 248);
+  --core-color-primary--0100: rgb(209 214 245);
+  --core-color-primary--0200: rgb(179 187 239);
+  --core-color-primary--0300: rgb(164 174 235);
+  --core-color-primary--0400: rgb(149 160 232);
+  --core-color-primary--0500: rgb(133 147 229);
+  --core-color-primary--0600: rgb(118 133 225);
+  --core-color-primary--0700: rgb(103 120 222);
+  --core-color-primary--0800: rgb(78 95 196);
+  --core-color-primary--0900: rgb(52 69 171);
+  --core-color-primary--1000: rgb(27 44 145);
+  --core-color-primary--1100: rgb(1 18 120);
+  --core-color-primary--1200: rgb(0 0 95);
+  --core-color-primary--1300: rgb(0 0 69);
+  --core-color-primary--1400: rgb(0 0 0);
+
+  /* Core: typography */
+  --core-font-family--body: 'inter';
+  --core-font-family--code: 'dm mono';
+  --core-font-family--hero: 'campton';
+
+  --core-font-size--body: 14px;
+  --core-font-size--h1: 30px;
+  --core-font-size--h2: 24px;
+  --core-font-size--h3: 20px;
+  --core-font-size--h4: 18px;
+  --core-font-size--h5: 16px;
+  --core-font-size--small: 12px;
+
+  /* NOTE: use unitless font-weights */
+  --core-font-weight--bold: 700;
+  --core-font-weight--medium: 500;
+  --core-font-weight--regular: 400;
+
+  --core-line-height--body: 20px;
+  --core-line-height--h1: 36px;
+  --core-line-height--h2: 30px;
+  --core-line-height--h3: 24px;
+  --core-line-height--h4: 20px;
+  --core-line-height--h5: 18px;
+  --core-line-height--small: 16px;
+
+  /* Core: sizes */
+  --core-size--0000: 0px;
+  --core-size--0050: 2px;
+  --core-size--0100: 4px;
+  --core-size--0150: 6px;
+  --core-size--0200: 8px;
+  --core-size--0300: 12px;
+  --core-size--0400: 16px;
+  --core-size--0600: 24px;
+  --core-size--0700: 32px;
+  --core-size--0800: 40px;
+  --core-size--0900: 48px;
+  --core-size--1000: 52px;
+  --core-size--1100: 64px;
+  --core-size--1200: 72px;
+  --core-size--1300: 80px;
+
+  /* Core: spacing */
+  --core-space--0000: 0px;
+  --core-space--0050: 2px;
+  --core-space--0100: 4px;
+  --core-space--0150: 6px;
+  --core-space--0200: 8px;
+  --core-space--0300: 12px;
+  --core-space--0400: 16px;
+  --core-space--0600: 24px;
+  --core-space--0700: 32px;
+  --core-space--0800: 40px;
+  --core-space--0900: 48px;
+  --core-space--1000: 52px;
+  --core-space--1100: 64px;
+  --core-space--1200: 72px;
+  --core-space--1300: 80px;
+
+  /* Semantic: backgrounds */
+  --sem-background--inverted: var(--core-color-neutral--1400);
+  --sem-background--light: var(--core-color-neutral--0050);
+  --sem-background--muted: var(--core-color-neutral--0300);
+  --sem-background--neutral: var(--core-color-neutral--0000);
+  --sem-background--subtle: var(--core-color-neutral--0100);
+
+  /* Semantic: size and space */
+  --sem-size---lg: var(--core-size--0900);
+  --sem-size---md: var(--core-size--0600);
+  --sem-size---sm: var(--core-size--0400);
+  --sem-size---xl: var(--core-size--1100);
+  --sem-size---xs: var(--core-size--0200);
+
+  --sem-space---lg: var(--core-space--0700);
+  --sem-space---md: var(--core-space--0600);
+  --sem-space---sm: var(--core-space--0400);
+  --sem-space---xl: var(--core-space--0800);
+  --sem-space---xs: var(--core-space--0200);
+
+  /* Semantic: status */
+  --sem-status-error--text: rgb(255 255 255);
+  --sem-status-success--text: rgb(0 113 88);
+
+  /* Semantic: text */
+  --sem-text--inverted: var(--core-color-neutral--0000);
+  --sem-text--light: var(--core-color-neutral--0900);
+  --sem-text--muted: var(--core-color-neutral--1100);
+  --sem-text--neutral: var(--core-color-neutral--1300);
+  --sem-text--subtle: var(--core-color-neutral--1000);
 }
 
 body {
   margin: 0;
+  font-family: var(--core-font-family--body), system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
