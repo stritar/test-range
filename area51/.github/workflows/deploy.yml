@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy area51 to GitHub Pages
 
 on:
   push:
@@ -17,17 +17,23 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: area51
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: area51/package-lock.json
+
       - run: npm ci
       - run: npm run build
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: area51/dist
 
   deploy:
     needs: build
