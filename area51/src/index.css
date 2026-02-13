@@ -185,7 +185,7 @@
   --motion-overlay-ease: var(--core-motion-ease-emphasized);
   --motion-modal-enter: var(--core-motion-duration-300);
 
-  /* Shell (page foundation – from Figma) */
+  /* Shell (page foundation) */
   --shell-background: #f9fafb;
 
   /* Component: button */

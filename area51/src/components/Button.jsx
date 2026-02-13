@@ -1,4 +1,4 @@
-export default function FigmaButton({
+export default function Button({
   children = "label",
   onClick,
   type = "button",
@@ -9,7 +9,7 @@ export default function FigmaButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      data-figma-node="93:192"
+      data-node-id="93:192"
       style={{
         fontFamily: "var(--button-label-font-family)",
         fontWeight: "var(--button-label-font-weight)",

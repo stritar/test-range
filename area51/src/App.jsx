@@ -1,4 +1,4 @@
-import FigmaButton from "./components/FigmaButton.jsx";
+import Button from "./components/Button.jsx";
 
 export default function App() {
   return (
@@ -11,8 +11,8 @@ export default function App() {
         background: "var(--shell-background)",
       }}
     >
-      <FigmaButton>Submit</FigmaButton>,
-      <FigmaButton disabled>Submit</FigmaButton>,
+      <Button>Submit</Button>
+      <Button disabled>Submit</Button>
     </div>
   );
 }
