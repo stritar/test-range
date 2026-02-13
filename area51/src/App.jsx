@@ -1,5 +1,6 @@
 import TestTile from "./components/TestTile.jsx";
 import FigmaRectangle from "./components/FigmaRectangle.jsx";
+import FigmaPill from "./components/FigmaPill.jsx";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       >
         <TestTile />
         <FigmaRectangle width="320px" />
+        <FigmaPill />
       </div>
     </div>
   );
