@@ -11,7 +11,8 @@ export default function App() {
         background: "var(--sem-background--neutral)",
       }}
     >
-      <FigmaButton />
+      <FigmaButton>Submit</FigmaButton>,
+      <FigmaButton disabled>Submit</FigmaButton>,
     </div>
   );
 }
