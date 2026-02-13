@@ -8,7 +8,7 @@ export default function App() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "var(--sem-background--neutral)",
+        background: "var(--shell-background)",
       }}
     >
       <FigmaButton>Submit</FigmaButton>,

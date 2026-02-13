@@ -185,6 +185,9 @@
   --motion-overlay-ease: var(--core-motion-ease-emphasized);
   --motion-modal-enter: var(--core-motion-duration-300);
 
+  /* Shell (page foundation – from Figma) */
+  --shell-background: #f9fafb;
+
   /* Component: button */
   --button-background: var(--core-color-primary--0600);
   --button-background--disabled: var(--core-color-neutral--0300);
@@ -205,6 +208,7 @@
 
 body {
   margin: 0;
+  background: var(--shell-background);
   font-family: var(--core-font-family--body), system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
