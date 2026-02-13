@@ -1,7 +1,4 @@
-import TestTile from "./components/TestTile.jsx";
-import FigmaRectangle from "./components/FigmaRectangle.jsx";
-import FigmaPill from "./components/FigmaPill.jsx";
-import FigmaHeading from "./components/FigmaHeading.jsx";
+import FigmaButton from "./components/FigmaButton.jsx";
 
 export default function App() {
   return (
@@ -14,16 +11,7 @@ export default function App() {
         background: "var(--sem-background--neutral)",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--sem-space---md)",
-          alignItems: "center",
-        }}
-      >
-
-      </div>
+      <FigmaButton />
     </div>
   );
 }

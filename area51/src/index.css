@@ -62,10 +62,10 @@
   --core-color-primary--1300: rgb(0 0 69);
   --core-color-primary--1400: rgb(0 0 0);
 
-  /* Core: typography */
-  --core-font-family--body: 'inter';
-  --core-font-family--code: 'dm mono';
-  --core-font-family--hero: 'campton';
+  /* Core: typography (Inter & DM Mono from Google Fonts; Campton self-hosted) */
+  --core-font-family--body: 'Inter', system-ui, sans-serif;
+  --core-font-family--code: 'DM Mono', ui-monospace, monospace;
+  --core-font-family--hero: 'campton', sans-serif;
 
   --core-font-size--body: 14px;
   --core-font-size--h1: 30px;
@@ -122,6 +122,30 @@
   --core-space--1200: 72px;
   --core-space--1300: 80px;
 
+  /* Core: motion durations (ms) */
+  --core-motion-duration-100: 100ms;
+  --core-motion-duration-150: 150ms;
+  --core-motion-duration-200: 200ms;
+  --core-motion-duration-250: 250ms;
+  --core-motion-duration-300: 300ms;
+  --core-motion-duration-400: 400ms;
+  --core-motion-duration-500: 500ms;
+
+  /* Core: motion delays (ms) */
+  --core-motion-delay-0: 0ms;
+  --core-motion-delay-50: 50ms;
+  --core-motion-delay-100: 100ms;
+  --core-motion-delay-150: 150ms;
+
+  /* Core: motion easings */
+  --core-motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --core-motion-ease-emphasized: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* Core: motion distances */
+  --core-motion-distance-1: 4px;
+  --core-motion-distance-2: 8px;
+  --core-motion-distance-3: 16px;
+
   /* Semantic: backgrounds */
   --sem-background--inverted: var(--core-color-neutral--1400);
   --sem-background--light: var(--core-color-neutral--0050);
@@ -153,15 +177,34 @@
   --sem-text--neutral: var(--core-color-neutral--1300);
   --sem-text--subtle: var(--core-color-neutral--1000);
 
-  /* Component: test */
-  --test-background: var(--sem-background--light);
-  --test-border-radius: var(--core-border-radius--lg);
-  --test-height: var(--core-space--1100);
-  --test-width: var(--core-space--1100);
+  /* Semantic: motion */
+  --motion-enter-duration: var(--core-motion-duration-200);
+  --motion-exit-duration: var(--core-motion-duration-150);
+  --motion-hover-duration: var(--core-motion-duration-150);
+  --motion-focus-duration: var(--core-motion-duration-150);
+  --motion-overlay-ease: var(--core-motion-ease-emphasized);
+  --motion-modal-enter: var(--core-motion-duration-300);
+
+  /* Component: button */
+  --button-background: var(--core-color-primary--0600);
+  --button-background--disabled: var(--core-color-neutral--0300);
+  --button-background--hover: var(--core-color-primary--0500);
+  --button-background--pressed: var(--core-color-primary--0700);
+  --button-border-radius: var(--core-border-radius--xxl);
+  --button-label-color: var(--sem-text--inverted);
+  --button-label-color--disabled: var(--sem-text--light);
+  --button-label-font-family: var(--core-font-family--body);
+  --button-label-font-size: var(--core-font-size--body);
+  --button-label-font-weight: var(--core-font-weight--medium);
+  --button-label-line-height: var(--core-line-height--body);
+  --button-label-padding-left-right: var(--core-space--0400);
+  --button-padding: var(--core-space--0400);
 }
 
 body {
   margin: 0;
   font-family: var(--core-font-family--body), system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
