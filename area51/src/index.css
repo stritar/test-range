@@ -204,6 +204,27 @@
   --button-label-padding-right: var(--core-space--0700);
   --button-padding-top: var(--core-space--0400);
   --button-padding-bottom: var(--core-space--0400);
+
+  /* Component: icon */
+  --icon-color: var(--sem-text--neutral);
+  --icon-height: var(--core-size--0400);
+  --icon-width: var(--core-size--0400);
+
+  /* Component: card (from Figma: card/background, card/border-radius, card/padding, card/gap) */
+  --card-background: #ffffff;
+  --card-border-radius: 12px;
+  --card-padding: 32px;
+  --card-gap: 32px;
+  --card-shadow: none;
+
+  /* Component: card-header (from Figma: card/header/font-family, card/header/color, card/header/header/*, card/header/gap) */
+  --card-header-font-family: var(--core-font-family--body);
+  --card-header-font-size: 16px;
+  --card-header-font-weight: 700;
+  --card-header-line-height: 18px;
+  --card-header-color: #242635;
+  --card-header-gap: 8px;
+  --card-header-icon-size: 16px;
 }
 
 body {
