@@ -156,6 +156,12 @@
   --sem-text--muted: var(--core-color-neutral--1100);
   --sem-text--neutral: var(--core-color-neutral--1300);
   --sem-text--subtle: var(--core-color-neutral--1000);
+
+  /* Component: test */
+  --test-background: var(--sem-background--light);
+  --test-border-radius: var(--core-border-radius--lg);
+  --test-height: var(--core-space--1100);
+  --test-width: var(--core-space--1100);
 }
 
 body {
