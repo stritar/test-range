@@ -4,6 +4,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/area51/",
+  base: "/test-range/area51/",
 });
-
