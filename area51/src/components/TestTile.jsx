@@ -12,7 +12,6 @@ export default function TestTile() {
         fontFamily: "var(--core-font-family--hero)",
       }}
     >
-      Test component
     </div>
   );
 }
