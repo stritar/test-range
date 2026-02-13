@@ -1,6 +1,7 @@
 import TestTile from "./components/TestTile.jsx";
 import FigmaRectangle from "./components/FigmaRectangle.jsx";
 import FigmaPill from "./components/FigmaPill.jsx";
+import FigmaHeading from "./components/FigmaHeading.jsx";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           alignItems: "center",
         }}
       >
+        <FigmaHeading />
         <TestTile />
         <FigmaRectangle width="320px" />
         <FigmaPill />
