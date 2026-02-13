@@ -23,7 +23,7 @@ export default function FigmaButton({
           : "var(--button-background)",
         border: "none",
         borderRadius: "var(--button-border-radius)",
-        padding: "var(--button-padding) var(--button-label-padding-left-right)",
+        padding: "var(--button-padding-top) 0 var(--button-padding-bottom) 0",
         cursor: disabled ? "not-allowed" : "pointer",
         transition:
           "background var(--motion-hover-duration) var(--core-motion-ease-standard), color var(--motion-hover-duration) var(--core-motion-ease-standard)",
@@ -45,7 +45,15 @@ export default function FigmaButton({
         e.currentTarget.style.background = "var(--button-background--hover)";
       }}
     >
-      {children}
+      <span
+        style={{
+          display: "inline-block",
+          paddingLeft: "var(--button-label-padding-left)",
+          paddingRight: "var(--button-label-padding-right)",
+        }}
+      >
+        {children}
+      </span>
     </button>
   );
 }

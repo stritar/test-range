@@ -195,10 +195,12 @@
   --button-label-color--disabled: var(--sem-text--light);
   --button-label-font-family: var(--core-font-family--body);
   --button-label-font-size: var(--core-font-size--body);
-  --button-label-font-weight: var(--core-font-weight--medium);
+  --button-label-font-weight: var(--core-font-weight--bold);
   --button-label-line-height: var(--core-line-height--body);
-  --button-label-padding-left-right: var(--core-space--0400);
-  --button-padding: var(--core-space--0400);
+  --button-label-padding-left: var(--core-space--0700);
+  --button-label-padding-right: var(--core-space--0700);
+  --button-padding-top: var(--core-space--0400);
+  --button-padding-bottom: var(--core-space--0400);
 }
 
 body {
