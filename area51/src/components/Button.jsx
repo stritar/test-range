@@ -3,12 +3,14 @@ export default function Button({
   onClick,
   type = "button",
   disabled = false,
+  size = "large",
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
+      data-button-size={size}
       data-node-id="93:192"
       style={{
         fontFamily: "var(--button-label-font-family)",

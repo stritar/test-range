@@ -188,22 +188,40 @@
   /* Shell (page foundation) */
   --shell-background: #f9fafb;
 
-  /* Component: button */
-  --button-background: var(--core-color-primary--0600);
-  --button-background--disabled: var(--core-color-neutral--0300);
-  --button-background--hover: var(--core-color-primary--0500);
-  --button-background--pressed: var(--core-color-primary--0700);
-  --button-border-radius: var(--core-border-radius--xxl);
-  --button-label-color: var(--sem-text--inverted);
-  --button-label-color--disabled: var(--sem-text--light);
-  --button-label-font-family: var(--core-font-family--body);
-  --button-label-font-size: var(--core-font-size--body);
-  --button-label-font-weight: var(--core-font-weight--bold);
-  --button-label-line-height: var(--core-line-height--body);
-  --button-label-padding-left: var(--core-space--0700);
-  --button-label-padding-right: var(--core-space--0700);
-  --button-padding-top: var(--core-space--0400);
-  --button-padding-bottom: var(--core-space--0400);
+  /* Component: button (size-specific tokens; --button-* are set by [data-button-size]) */
+  /* Button size: large */
+  --button-large-background: var(--core-color-primary--0600);
+  --button-large-background--disabled: var(--core-color-neutral--0300);
+  --button-large-background--hover: var(--core-color-primary--0500);
+  --button-large-background--pressed: var(--core-color-primary--0700);
+  --button-large-border-radius: var(--core-border-radius--xxl);
+  --button-large-label-color: var(--sem-text--inverted);
+  --button-large-label-color--disabled: var(--sem-text--light);
+  --button-large-label-font-family: var(--core-font-family--body);
+  --button-large-label-font-size: var(--core-font-size--body);
+  --button-large-label-font-weight: var(--core-font-weight--bold);
+  --button-large-label-line-height: var(--core-line-height--body);
+  --button-large-label-padding-left: var(--core-space--0700);
+  --button-large-label-padding-right: var(--core-space--0700);
+  --button-large-padding-top: var(--core-space--0400);
+  --button-large-padding-bottom: var(--core-space--0400);
+
+  /* Default: use large when no size or unknown size */
+  --button-background: var(--button-large-background);
+  --button-background--disabled: var(--button-large-background--disabled);
+  --button-background--hover: var(--button-large-background--hover);
+  --button-background--pressed: var(--button-large-background--pressed);
+  --button-border-radius: var(--button-large-border-radius);
+  --button-label-color: var(--button-large-label-color);
+  --button-label-color--disabled: var(--button-large-label-color--disabled);
+  --button-label-font-family: var(--button-large-label-font-family);
+  --button-label-font-size: var(--button-large-label-font-size);
+  --button-label-font-weight: var(--button-large-label-font-weight);
+  --button-label-line-height: var(--button-large-label-line-height);
+  --button-label-padding-left: var(--button-large-label-padding-left);
+  --button-label-padding-right: var(--button-large-label-padding-right);
+  --button-padding-top: var(--button-large-padding-top);
+  --button-padding-bottom: var(--button-large-padding-bottom);
 
   /* Component: icon */
   --icon-color: var(--sem-text--neutral);
@@ -225,6 +243,25 @@
   --card-header-color: #242635;
   --card-header-gap: 8px;
   --card-header-icon-size: 16px;
+}
+
+/* Button size mapping: component uses --button-*; these are set from size tokens */
+[data-button-size="large"] {
+  --button-background: var(--button-large-background);
+  --button-background--disabled: var(--button-large-background--disabled);
+  --button-background--hover: var(--button-large-background--hover);
+  --button-background--pressed: var(--button-large-background--pressed);
+  --button-border-radius: var(--button-large-border-radius);
+  --button-label-color: var(--button-large-label-color);
+  --button-label-color--disabled: var(--button-large-label-color--disabled);
+  --button-label-font-family: var(--button-large-label-font-family);
+  --button-label-font-size: var(--button-large-label-font-size);
+  --button-label-font-weight: var(--button-large-label-font-weight);
+  --button-label-line-height: var(--button-large-label-line-height);
+  --button-label-padding-left: var(--button-large-label-padding-left);
+  --button-label-padding-right: var(--button-large-label-padding-right);
+  --button-padding-top: var(--button-large-padding-top);
+  --button-padding-bottom: var(--button-large-padding-bottom);
 }
 
 body {
