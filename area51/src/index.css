@@ -243,6 +243,19 @@
   --card-header-color: #242635;
   --card-header-gap: 8px;
   --card-header-icon-size: 16px;
+
+  /* Component: radio (from Figma: radio/outline-color, radio/background, radio/indicator-color, etc.) */
+  --radio-width: 16px;
+  --radio-height: 16px;
+  --radio-border-radius: 99999px;
+  --radio-outline-color: #9b9eae;
+  --radio-background: #ffffff;
+  --radio-indicator-color: #9b9eae;
+  --radio-indicator-color--selected: #242635;
+  --radio-outline-color--disabled: #d7d9df;
+  --radio-background--disabled: #f0f1f5;
+  --radio-indicator-color--disabled: #d7d9df;
+  --radio-indicator-size: 8px;
 }
 
 /* Button size mapping: component uses --button-*; these are set from size tokens */
