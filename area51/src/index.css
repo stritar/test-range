@@ -244,18 +244,24 @@
   --card-header-gap: 8px;
   --card-header-icon-size: 16px;
 
-  /* Component: radio (from Figma: radio/outline-color, radio/background, radio/indicator-color, etc.) */
-  --radio-width: 16px;
-  --radio-height: 16px;
-  --radio-border-radius: 99999px;
-  --radio-outline-color: #9b9eae;
-  --radio-background: #ffffff;
-  --radio-indicator-color: #9b9eae;
-  --radio-indicator-color--selected: #242635;
-  --radio-outline-color--disabled: #d7d9df;
-  --radio-background--disabled: #f0f1f5;
-  --radio-indicator-color--disabled: #d7d9df;
+  /* Component: radio */
+  --radio-background: var(--sem-background--neutral);
+  --radio-background--disabled: var(--sem-background--subtle);
+  --radio-background--hover: var(--sem-background--subtle);
+  --radio-border-raidus: var(--core-border-radius--xxl);
+  --radio-border-radius: var(--radio-border-raidus);
+  --radio-height: var(--core-size--0400);
+  --radio-indicator-color--disabled: var(--sem-background--muted);
+  --radio-indicator-color--hover: var(--sem-text--light);
+  --radio-indicator-color--selected: var(--sem-text--neutral);
   --radio-indicator-size: 8px;
+  --radio-outline-color: var(--sem-text--light);
+  --radio-outline-color--disabled: var(--sem-background--muted);
+  --radio-outline-color--hover: var(--sem-text--light);
+  --radio-outline-color--selected: var(--sem-text--light);
+  --radio-width: var(--core-size--0400);
+  --radio-transition-duration: var(--motion-hover-duration);
+  --radio-transition-easing: var(--core-motion-ease-standard);
 }
 
 /* Button size mapping: component uses --button-*; these are set from size tokens */
