@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Badge from "./components/Badge.jsx";
 import Button from "./components/Button.jsx";
 import Card from "./components/Card.jsx";
 import Icon from "./components/Icon.jsx";
@@ -24,6 +25,10 @@ export default function App() {
       }}
     >
       <Icon name="text" ariaLabel="Text" />
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--sem-space---sm)", alignItems: "center" }}>
+        <Badge>Label</Badge>
+        <Badge>Label</Badge>
+      </div>
       <div style={{ display: "flex", gap: "var(--sem-space---sm)" }}>
         <Button>Submit</Button>
         <Button disabled>Submit</Button>

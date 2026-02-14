@@ -262,6 +262,20 @@
   --radio-width: var(--core-size--0400);
   --radio-transition-duration: var(--motion-hover-duration);
   --radio-transition-easing: var(--core-motion-ease-standard);
+
+  /* Component: badge */
+  --badge-background: var(--core-color-primary--0050);
+  --badge-background--hover: var(--core-color-primary--0100);
+  --badge-border-radius: var(--core-border-radius--xxl);
+  --badge-color: var(--core-color-primary--0900);
+  --badge-font-family: var(--core-font-family--code);
+  --badge-font-size: var(--core-font-size--small);
+  --badge-font-weight: var(--core-font-weight--medium);
+  --badge-line-height: var(--core-line-height--small);
+  --badge-padding-down: var(--core-space--0050);
+  --badge-padding-left: var(--core-space--0300);
+  --badge-padding-right: var(--core-space--0300);
+  --badge-padding-up: var(--core-space--0050);
 }
 
 /* Button size mapping: component uses --button-*; these are set from size tokens */
