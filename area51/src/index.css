@@ -1,3 +1,6 @@
+/* Design tokens: core → semantic → component */
+@import './styles/design-tokens/index.css';
+
 *,
 *::before,
 *::after {

@@ -37,3 +37,55 @@ No Assumptions
 Do not substitute “similar-looking” icons.
 Do not attempt to recreate missing icons manually.
 Implementation must reflect the existing asset system exactly — no modifications, no assumptions, no replacements.
+
+When implementing components that include interactive states (e.g., hover, pressed, active):
+State Detection
+If Figma defines a hover, pressed, active, or similar interactive state, it must be implemented.
+Do not invent states that are not defined in Figma MCP.
+Use Animation Variables
+Any transition between default → hover → pressed (or similar) must use an existing motion/transition variable.
+Do not hardcode transition durations, easing, or timing values.
+Do not use arbitrary values like 200ms ease.
+Appropriate Variable Assignment
+Assign the correct semantic motion variable (e.g., --motion-fast, --motion-interactive, etc., depending on the system).
+The variable used must match the type of interaction (micro-interaction vs structural transition).
+No Inline Transitions
+Do not define inline transition properties unless they reference a design token variable.
+All animation timing must be token-driven.
+Strict Parity
+If Figma defines a visual state change but does not define motion behavior, use the standard interactive motion variable from the design system.
+Do not introduce custom animations beyond what is required for the defined state change.
+All interactive transitions must be token-based, consistent, and system-driven — never ad-hoc.
+
+Variable Governance Rules (No Variable Creation Policy)
+No New Variables
+Do not create new CSS variables, design tokens, or motion tokens.
+Do not invent semantic names (e.g., --color-primary-hover, --spacing-card, --motion-fast) if they do not already exist in the system.
+Do not “improve” or “normalize” missing tokens.
+Use Existing Tokens Only
+Only use variables that are already defined in the design system.
+If a required value does not have an existing token, do not fabricate one.
+Missing Variable Reporting (Required)
+After completing an implementation, include a section titled:
+⚠ Missing Design Tokens
+List:
+The property needing a token (e.g., hover background color)
+The component affected
+The exact value currently required (from Figma)
+The type of token that is missing (color / spacing / radius / motion / etc.)
+Temporary Values
+If implementation requires a value and no token exists:
+Use the explicit raw value from Figma (no assumptions).
+Clearly flag it in the Missing Design Tokens section.
+No Silent Decisions
+Never silently introduce a variable.
+Never assume a naming convention.
+Never extend the token system independently.
+The system is token-authoritative. If a token does not exist, implementation must expose the gap — not solve it autonomously.
+
+## Breakpoints and layout
+
+- **Source of truth:** Breakpoints and layout tokens are in `src/styles/design-tokens/core.css` (from Figma Mode 1 tokens).
+- **Usage:** Use only these variables for responsive behavior. Media queries must use the breakpoint variables (e.g. `min-width: var(--core-breakpoint--md)`). Do not add new breakpoints or layout values.
+- **Grid:** Column count, margin, and gutter are per breakpoint: `--core-layout-columns--*`, `--core-layout-margin--*`, `--core-layout-gutter--*`. Do not hardcode column counts or grid spacing.
+- **Missing tokens:** If a breakpoint or layout value is needed and no token exists, list it in ⚠ Missing Design Tokens — do not add it yourself.

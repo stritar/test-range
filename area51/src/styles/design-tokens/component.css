@@ -1,0 +1,14 @@
+/**
+ * Component-level design tokens
+ * Component-specific variables that reference semantic (or core) tokens.
+ * Add tokens here as you build components (e.g. --component-button--bg, --component-card--radius).
+ */
+
+:root {
+  /* Example (uncomment and customize as you add components):
+  --component-button--background: var(--core-color-primary--0800);
+  --component-button--border-radius: var(--core-border-radius--md);
+  --component-card--background: var(--sem-background--neutral);
+  --component-card--padding: var(--sem-space--md);
+  */
+}

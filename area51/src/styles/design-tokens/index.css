@@ -1,0 +1,8 @@
+/**
+ * Design tokens entry point
+ * Order: core → semantic → component
+ */
+
+@import './core.css';
+@import './semantic.css';
+@import './component.css';
