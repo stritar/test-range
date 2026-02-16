@@ -89,3 +89,7 @@ The system is token-authoritative. If a token does not exist, implementation mus
 - **Usage:** Use only these variables for responsive behavior. Media queries must use the breakpoint variables (e.g. `min-width: var(--core-breakpoint--md)`). Do not add new breakpoints or layout values.
 - **Grid:** Column count, margin, and gutter are per breakpoint: `--core-layout-columns--*`, `--core-layout-margin--*`, `--core-layout-gutter--*`. Do not hardcode column counts or grid spacing.
 - **Missing tokens:** If a breakpoint or layout value is needed and no token exists, list it in ⚠ Missing Design Tokens — do not add it yourself.
+
+## Development workflow
+
+- **Build on save:** Every time the user saves, run `npm run build` so they can test changes without constantly using the terminal.

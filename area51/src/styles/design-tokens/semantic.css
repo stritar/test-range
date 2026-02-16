@@ -38,6 +38,11 @@
     transform var(--core-motion-duration--normal) var(--core-motion-easing--smooth),
     opacity var(--core-motion-duration--normal) var(--core-motion-easing--smooth);
 
+  /* Icon size (single value for both width and height) */
+  --sem-icon-size--xs: var(--core-size--0200);   /* 8px */
+  --sem-icon-size--sm: var(--core-size--0400);   /* 16px */
+  --sem-icon-size--md: var(--core-size--0600);   /* 24px */
+
   /* Size (semantic scale) */
   --sem-size--xs: var(--core-size--0200);
   --sem-size--sm: var(--core-size--0400);
