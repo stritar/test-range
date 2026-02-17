@@ -40,6 +40,24 @@ Do not substitute “similar-looking” icons.
 Do not attempt to recreate missing icons manually.
 Implementation must reflect the existing asset system exactly — no modifications, no assumptions, no replacements.
 
+Color Inheritance Pattern
+When implementing components with child elements:
+Check if multiple child components share the same color value.
+If children share the same color, define the color on the parent component instead of duplicating it on each child.
+This allows children to inherit the color naturally, ensuring consistency and reducing duplication.
+Example Pattern:
+If an icon and a heading within a card header both need to be blue:
+❌ Wrong: Define color: blue; on both .icon and .heading
+✅ Correct: Define color: blue; on .header (parent), let children inherit
+Icons with currentColor Support:
+All icons use fill="currentColor" in their SVG.
+Icons must have color: inherit; in their CSS (e.g., .root { color: inherit; }).
+This ensures icons automatically match the color of their parent context.
+Implementation Priority:
+First check if children share colors → define on parent.
+Only define color on individual children if they need different colors from each other.
+This pattern ensures maintainability, consistency, and proper utilization of CSS inheritance.
+
 When implementing components that include interactive states (e.g., hover, pressed, active):
 State Detection
 If Figma defines a hover, pressed, active, or similar interactive state, it must be implemented.

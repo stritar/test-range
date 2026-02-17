@@ -2,6 +2,7 @@
   display: inline-block;
   flex-shrink: 0;
   vertical-align: middle;
+  color: inherit;
 }
 
 .root svg {

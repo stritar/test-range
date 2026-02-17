@@ -13,6 +13,7 @@
   display: flex;
   align-items: center;
   gap: var(--component-card--header-gap);
+  color: blue;
 }
 
 .heading {
@@ -20,6 +21,5 @@
   font-size: var(--core-font-size--h5);
   font-weight: var(--core-font-weight--bold);
   line-height: var(--core-line-height--h5);
-  color: var(--component-card--header-color);
   margin: 0;
 }

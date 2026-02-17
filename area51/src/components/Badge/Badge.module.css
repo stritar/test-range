@@ -1,0 +1,7 @@
+.root {
+  display: flex;
+  align-items: center;
+  padding: var(--core-space--0300) var(--core-space--0600);
+  background: var(--sem-background--inverted);
+  border-radius: var(--core-border-radius--sm);
+}
