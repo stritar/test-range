@@ -6,12 +6,19 @@
 
 :root {
   /* Card */
-  --component-card--background: var(--sem-background--neutral);
-  --component-card--border-radius: var(--core-border-radius--md);
-  --component-card--padding: var(--sem-layout-gutter);
-  --component-card--gap: var(--sem-layout-gutter);
-  --component-card--header-gap: var(--sem-space--xs);
-  --component-card--header-color: var(--sem-text--neutral);
-  --component-card--width: 256px;
-  --component-card--height: 160px;
+  --card-background: var(--sem-background--neutral);
+  --card-background--inverted: var(--sem-background--inverted);
+  --card-background--muted: var(--sem-background--muted);
+  --card-background--subtle: var(--sem-background--subtle);
+  --card-border-radius: var(--core-border-radius--md);
+  --card-padding: var(--sem-layout-gutter);
+  --card-gap: var(--sem-layout-gutter);
+  --card-header-gap: var(--sem-space--xs);
+  --card-header-color: var(--sem-text--neutral);
+  --card-header-font-family: var(--core-font-family--body);
+  --card-header-font-size: var(--core-font-size--h5);
+  --card-header-font-weight: var(--core-font-weight--medium);
+  --card-header-line-height: var(--core-line-height--h5);
+  --card-width: 256px;
+  --card-height: 160px;
 }

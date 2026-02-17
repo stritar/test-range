@@ -9,15 +9,22 @@
 
 .card {
   grid-column: span 4;
-  min-height: 160px;
 }
 
 .cardTall {
   grid-column: span 4;
-  min-height: 476px;
 }
 
-@media (max-width: 768px) {
+/* Medium screens (tablet): stack cards vertically */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .card,
+  .cardTall {
+    grid-column: span 8;
+  }
+}
+
+/* Small screens (mobile): stack cards vertically */
+@media (max-width: 767px) {
   .card,
   .cardTall {
     grid-column: span 4;
