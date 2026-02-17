@@ -6,7 +6,7 @@
 
 :root {
   /* Background */
-  --body-background: var(--sem-background--light);
+  --sem-body-background: var(--sem-background--light);
   --sem-background--inverted: var(--core-color-neutral--1400);
   --sem-background--light: var(--core-color-neutral--0050);
   --sem-background--muted: var(--core-color-neutral--0300);

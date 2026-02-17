@@ -3,15 +3,23 @@
   grid-template-columns: repeat(var(--sem-layout-columns), 1fr);
   gap: var(--sem-layout-gutter);
   padding: var(--sem-layout-margin);
+  background-color: var(--sem-body-background, #f4f5f7);
+  min-height: 100vh;
 }
 
 .card {
-  grid-column: span 8;
-  width: 100%;
+  grid-column: span 4;
+  min-height: 160px;
+}
+
+.cardTall {
+  grid-column: span 4;
+  min-height: 476px;
 }
 
 @media (max-width: 768px) {
-  .card {
+  .card,
+  .cardTall {
     grid-column: span 4;
   }
 }

@@ -58,6 +58,17 @@ First check if children share colors → define on parent.
 Only define color on individual children if they need different colors from each other.
 This pattern ensures maintainability, consistency, and proper utilization of CSS inheritance.
 
+CSS Variable Fallback Validation
+When CSS variables include fallback values (e.g., var(--body-background, #f8f9fb)):
+Always verify that the fallback color matches the actual value of the referenced variable.
+Resolve the variable chain to find the final hex/rgb value.
+If the fallback does not match the variable's resolved value, update the fallback to match.
+If the fallback is unnecessary (variable always exists), consider removing it.
+Example:
+❌ Wrong: background-color: var(--body-background, #f8f9fb); when --body-background resolves to #f4f5f7
+✅ Correct: background-color: var(--body-background, #f4f5f7); or background-color: var(--body-background);
+This ensures fallback values are accurate and prevents visual inconsistencies when variables fail to load.
+
 When implementing components that include interactive states (e.g., hover, pressed, active):
 State Detection
 If Figma defines a hover, pressed, active, or similar interactive state, it must be implemented.

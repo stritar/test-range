@@ -12,40 +12,40 @@
   --core-border-radius--xxl: 99999px;
 
   /* Colors - neutral */
-  --core-color-neutral--0000: rgb(255 255 255);
-  --core-color-neutral--0050: rgb(248 249 251);
-  --core-color-neutral--0100: rgb(240 241 245);
-  --core-color-neutral--0200: rgb(229 231 235);
-  --core-color-neutral--0300: rgb(215 217 223);
-  --core-color-neutral--0400: rgb(205 207 214);
-  --core-color-neutral--0500: rgb(195 198 207);
-  --core-color-neutral--0600: rgb(184 186 198);
-  --core-color-neutral--0700: rgb(174 177 190);
-  --core-color-neutral--0800: rgb(165 167 183);
-  --core-color-neutral--0900: rgb(155 158 174);
-  --core-color-neutral--1000: rgb(129 134 154);
-  --core-color-neutral--1100: rgb(105 110 132);
-  --core-color-neutral--1200: rgb(61 63 78);
-  --core-color-neutral--1300: rgb(36 38 53);
-  --core-color-neutral--1400: rgb(10 12 27);
+  --core-color-neutral--0000: #ffffff;
+  --core-color-neutral--0050: #f4f5f7;
+  --core-color-neutral--0100: #f0f1f5;
+  --core-color-neutral--0200: #e5e7eb;
+  --core-color-neutral--0300: #d7d9df;
+  --core-color-neutral--0400: #cdcfd6;
+  --core-color-neutral--0500: #c3c6cf;
+  --core-color-neutral--0600: #b8bac6;
+  --core-color-neutral--0700: #aeb1be;
+  --core-color-neutral--0800: #a5a7b7;
+  --core-color-neutral--0900: #9b9eae;
+  --core-color-neutral--1000: #81869a;
+  --core-color-neutral--1100: #696e84;
+  --core-color-neutral--1200: #3d3f4e;
+  --core-color-neutral--1300: #242635;
+  --core-color-neutral--1400: #0a0c1b;
 
   /* Colors - primary */
-  --core-color-primary--0000: rgb(255 255 255);
-  --core-color-primary--0050: rgb(225 228 248);
-  --core-color-primary--0100: rgb(209 214 245);
-  --core-color-primary--0200: rgb(179 187 239);
-  --core-color-primary--0300: rgb(164 174 235);
-  --core-color-primary--0400: rgb(149 160 232);
-  --core-color-primary--0500: rgb(133 147 229);
-  --core-color-primary--0600: rgb(118 133 225);
-  --core-color-primary--0700: rgb(103 120 222);
-  --core-color-primary--0800: rgb(78 95 196);
-  --core-color-primary--0900: rgb(52 69 171);
-  --core-color-primary--1000: rgb(27 44 145);
-  --core-color-primary--1100: rgb(1 18 120);
-  --core-color-primary--1200: rgb(0 0 95);
-  --core-color-primary--1300: rgb(0 0 69);
-  --core-color-primary--1400: rgb(0 0 0);
+  --core-color-primary--0000: #ffffff;
+  --core-color-primary--0050: #e1e4f8;
+  --core-color-primary--0100: #d1d6f5;
+  --core-color-primary--0200: #b3bbef;
+  --core-color-primary--0300: #a4aeeb;
+  --core-color-primary--0400: #95a0e8;
+  --core-color-primary--0500: #8593e5;
+  --core-color-primary--0600: #7685e1;
+  --core-color-primary--0700: #6778de;
+  --core-color-primary--0800: #4e5fc4;
+  --core-color-primary--0900: #3445ab;
+  --core-color-primary--1000: #1b2c91;
+  --core-color-primary--1100: #011278;
+  --core-color-primary--1200: #00005f;
+  --core-color-primary--1300: #000045;
+  --core-color-primary--1400: #000000;
 
   /* Typography - font family */
   --core-font-family--body: 'inter';
