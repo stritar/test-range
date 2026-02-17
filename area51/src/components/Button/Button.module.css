@@ -1,0 +1,61 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--button-border-radius);
+  font-family: var(--button-font-family);
+  cursor: pointer;
+  transition: var(--sem-motion-transition--base);
+}
+
+/* Primary variant */
+.root--primary {
+  background: var(--button-primary-background);
+  color: var(--button-primary-color);
+}
+
+.root--primary:hover:not(:disabled) {
+  background: var(--button-primary-background--hover);
+}
+
+.root--primary:active:not(:disabled) {
+  background: var(--button-primary-background--pressed);
+}
+
+.root--primary:disabled {
+  background: var(--button-primary-background--disabled);
+  color: var(--button-primary-color--disabled);
+  cursor: not-allowed;
+}
+
+/* Size variants - Primary Small */
+.root--primary.root--small {
+  padding: var(--button-primary-small-padding);
+  font-size: var(--button-primary-small-label-font-size);
+  font-weight: var(--button-primary-small-label-font-weight);
+  line-height: var(--button-primary-small-label-line-height);
+}
+
+/* Size variants - Primary Medium */
+.root--primary.root--medium {
+  padding: var(--button-primary-medium-padding);
+  font-size: var(--button-primary-medium-label-font-size);
+  font-weight: var(--button-primary-medium-label-font-weight);
+  line-height: var(--button-primary-medium-label-line-height);
+}
+
+/* Label with its own padding */
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.root--primary .label--small {
+  padding-inline: var(--button-primary-small-label-padding);
+}
+
+.root--primary .label--medium {
+  padding-inline: var(--button-primary-medium-label-padding);
+}
