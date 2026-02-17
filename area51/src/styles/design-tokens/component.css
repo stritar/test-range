@@ -5,10 +5,13 @@
  */
 
 :root {
-  /* Example (uncomment and customize as you add components):
-  --component-button--background: var(--core-color-primary--0800);
-  --component-button--border-radius: var(--core-border-radius--md);
+  /* Card */
   --component-card--background: var(--sem-background--neutral);
-  --component-card--padding: var(--sem-space--md);
-  */
+  --component-card--border-radius: var(--core-border-radius--md);
+  --component-card--padding: var(--sem-layout-gutter);
+  --component-card--gap: var(--sem-layout-gutter);
+  --component-card--header-gap: var(--sem-space--xs);
+  --component-card--header-color: var(--sem-text--neutral);
+  --component-card--width: 256px;
+  --component-card--height: 160px;
 }

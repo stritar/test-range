@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: var(--component-card--height);
+  padding: var(--component-card--padding);
+  background: var(--component-card--background);
+  border-radius: var(--component-card--border-radius);
+  gap: var(--component-card--gap);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--component-card--header-gap);
+}
+
+.heading {
+  font-family: var(--core-font-family--body);
+  font-size: var(--core-font-size--h5);
+  font-weight: var(--core-font-weight--bold);
+  line-height: var(--core-line-height--h5);
+  color: var(--component-card--header-color);
+  margin: 0;
+}

@@ -1,1 +1,17 @@
-/* App styles */
+.container {
+  display: grid;
+  grid-template-columns: repeat(var(--sem-layout-columns), 1fr);
+  gap: var(--sem-layout-gutter);
+  padding: var(--sem-layout-margin);
+}
+
+.card {
+  grid-column: span 8;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-column: span 4;
+  }
+}

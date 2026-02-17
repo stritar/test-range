@@ -28,8 +28,10 @@ No Inline Coloring
 Do not set color directly on the SVG element.
 Color must always be controlled by the parent component via CSS.
 Strict Asset Matching
-If the icon used in the inspected Figma design exists in the /assets/icons folder, use that exact file.
-If the icon does not exist in the assets folder, fallback to:
+Icon matching is based on name:
+If the icon name from Figma (e.g., icon='text') matches an icon file name in /assets/icons (e.g., text.svg), use that exact file.
+Icon name matching is case-sensitive and must be an exact match (without the .svg extension).
+If the icon name does not match any existing file in the assets folder, fallback to:
 /assets/icons/placeholder.svg
 Do not create new SVG files.
 Do not import third-party icon libraries as substitutes.
@@ -92,4 +94,32 @@ The system is token-authoritative. If a token does not exist, implementation mus
 
 ## Development workflow
 
-- **Build on save:** Every time the user saves, run `npm run build` so they can test changes without constantly using the terminal.
+Icon Usage Rule (Strict)
+When rendering or referencing icons:
+Never create, generate, invent, or approximate an icon.
+Never substitute with a similar icon.
+Never draw inline SVGs as replacements.
+Never guess icon names.
+Never modify or remix existing icons.
+If the requested icon does not exist exactly in the /assets/icons directory (or the approved icon source), you must use:
+/assets/icons/placeholder.svg
+This rule has no exceptions.
+If an icon cannot be found:
+Use /assets/icons/placeholder.svg
+Do not explain.
+Do not attempt alternatives.
+Do not generate a new icon.
+The system must strictly rely only on existing, approved icon assets.
+
+When implementing designs from Figma:
+All Figma properties must be fully readable and unambiguous.
+All layout, spacing, typography, color, state, and component properties must be clearly defined.
+No assumptions may be made.
+No inferred values may be used.
+No fallback styling may be invented.
+If any Figma property cannot be fully read, parsed, or confidently interpreted, the system must:
+Abort the process immediately.
+Produce no output.
+Do not guess or approximate missing values.
+Do not partially render the component.
+Implementation must only proceed when the Figma specification is 100% complete and unambiguous.

@@ -1,8 +1,10 @@
 /**
  * Design tokens entry point
- * Order: core → semantic → component
+ * Order: core → breakpoints → semantic → component
+ * Mirrors Figma variable structure with collections and modes
  */
 
 @import './core.css';
+@import './breakpoints.css';
 @import './semantic.css';
 @import './component.css';

@@ -1,14 +1,10 @@
-import { Icon } from './components/Icon';
+import { Card } from './components/Card/Card';
+import styles from './App.module.css';
 
 export default function App() {
   return (
-    <div>
-      <h1>App</h1>
-      <p>
-        <Icon name="text" size="sm" />{' '}
-        <Icon name="placeholder" size="sm" />{' '}
-        <Icon name="image" size="sm" ariaLabel="Image" />
-      </p>
+    <div className={styles.container}>
+      <Card className={styles.card} />
     </div>
   );
 }
