@@ -31,6 +31,9 @@
   --button-primary-medium-label-padding: var(--core-space--0200);
   --button-primary-medium-padding: var(--core-space--0300);
 
+  /* Logo */
+  --logo-symbol-size: 32px;
+
   /* Card */
   --card-background: var(--sem-background--neutral);
   --card-background--inverted: var(--sem-background--inverted);

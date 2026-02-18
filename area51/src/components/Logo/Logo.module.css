@@ -1,0 +1,55 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+}
+
+.symbol {
+  position: relative;
+  width: var(--logo-symbol-size);
+  height: var(--logo-symbol-size);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.symbolSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--sem-motion-duration--hover) var(--sem-motion-easing--hover);
+}
+
+.symbolSvg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.symbol[data-playing] .symbolSvg {
+  opacity: 0;
+}
+
+.symbolVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--sem-motion-duration--hover) var(--sem-motion-easing--hover);
+}
+
+.symbol[data-playing] .symbolVideo {
+  opacity: 1;
+}
+
+/* Hide video entirely on touch devices — SVG is the permanent fallback */
+@media (hover: none) {
+  .symbolVideo {
+    display: none;
+  }
+}
+
+.wordmark svg {
+  display: block;
+}
