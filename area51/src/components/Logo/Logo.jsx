@@ -1,7 +1,5 @@
-import { useRef, useState } from 'react';
 import symbolLightSvg from '../../assets/logo/logo-symbol-light.svg?raw';
 import wordmarkLightSvg from '../../assets/logo/logo-wordmark-light.svg?raw';
-import symbolLightMp4 from '../../assets/logo/logo-symbol-light.webm';
 import styles from './Logo.module.css';
 
 const types = ['symbol', 'wordmark', 'full'];
@@ -23,10 +21,6 @@ const svgs = {
   },
 };
 
-const videos = {
-  light: { symbol: symbolLightMp4 },
-};
-
 /**
  * Logo component — symbol, wordmark, or full lockup.
  *
@@ -42,46 +36,14 @@ export function Logo({ type = 'full', theme = 'light', className = '', ...rest }
   const showSymbol = safeType === 'symbol' || safeType === 'full';
   const showWordmark = safeType === 'wordmark' || safeType === 'full';
 
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleMouseEnter = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.currentTime = 0;
-    video.play();
-    setIsPlaying(true);
-  };
-
-  const handleEnded = () => {
-    if (videoRef.current) videoRef.current.currentTime = 0;
-    setIsPlaying(false);
-  };
-
   return (
     <div className={rootClass} {...rest}>
       {showSymbol && (
         <div
           className={styles.symbol}
-          data-playing={isPlaying || undefined}
-          onMouseEnter={handleMouseEnter}
-        >
-          <div
-            className={styles.symbolSvg}
-            aria-hidden="true"
-            dangerouslySetInnerHTML={{ __html: svgs[safeTheme].symbol }}
-          />
-          <video
-            ref={videoRef}
-            className={styles.symbolVideo}
-            src={videos[safeTheme].symbol}
-            muted
-            playsInline
-            preload="metadata"
-            onEnded={handleEnded}
-            aria-hidden="true"
-          />
-        </div>
+          aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: svgs[safeTheme].symbol }}
+        />
       )}
       {showWordmark && (
         <div
