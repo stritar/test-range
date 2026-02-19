@@ -5,32 +5,6 @@
  */
 
 :root {
-  /* Button - Shape & Base */
-  --button-border-radius: var(--core-border-radius--xxl);
-  --button-font-family: var(--core-font-family--body);
-
-  /* Button - Primary variant colors */
-  --button-primary-background: var(--core-color-primary--0700);
-  --button-primary-background--disabled: var(--sem-background--subtle);
-  --button-primary-background--hover: var(--core-color-primary--0600);
-  --button-primary-background--pressed: var(--core-color-primary--0800);
-  --button-primary-color: var(--sem-background--neutral);
-  --button-primary-color--disabled: var(--sem-text--light);
-
-  /* Button - Primary Small */
-  --button-primary-small-label-font-size: var(--core-font-size--small);
-  --button-primary-small-label-font-weight: var(--core-font-weight--medium);
-  --button-primary-small-label-line-height: var(--core-line-height--small);
-  --button-primary-small-label-padding: var(--core-space--0100);
-  --button-primary-small-padding: var(--core-space--0150);
-
-  /* Button - Primary Medium */
-  --button-primary-medium-label-font-size: var(--core-font-size--body);
-  --button-primary-medium-label-font-weight: var(--core-font-weight--medium);
-  --button-primary-medium-label-line-height: var(--core-line-height--body);
-  --button-primary-medium-label-padding: var(--core-space--0200);
-  --button-primary-medium-padding: var(--core-space--0300);
-
   /* Logo */
   --logo-symbol-size: 32px;
 
