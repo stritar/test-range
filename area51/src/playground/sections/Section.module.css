@@ -1,0 +1,26 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sem-space--xl);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sem-space--sm);
+}
+
+.groupLabel {
+  margin: 0;
+  color: var(--sem-text--neutral-subtle);
+  font-family: var(--core-font-family--body);
+  font-size: var(--core-font-size--label-sm);
+  font-weight: var(--core-font-weight--medium);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sem-space--md);
+  align-items: center;
+}
