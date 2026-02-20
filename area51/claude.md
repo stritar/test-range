@@ -160,3 +160,53 @@ Every time a new component is introduced, it must also be added to `src/App.jsx`
 - Add representative examples covering all meaningful prop combinations (variants, sizes, states, icon configs, etc.)
 - Use inline styles for playground layout only — never for component styling
 - Existing playground content must not be removed or reorganised
+
+## Isolation page (`/isolation`)
+
+The isolation page lives at `src/isolation/` and is served at `/isolation`. Its sole purpose is Figma MCP import — it must remain clean and chrome-free.
+
+### When adding a component to the isolation page
+
+1. **Create a dedicated isolation file** at `src/isolation/components/<ComponentName>Isolation.jsx`.
+2. **Import and render it** inside `src/isolation/Isolation.jsx` — nothing else. No nav, no sidebar, no decorative layout.
+3. **Expose every variant and config** as a separate instance. Every meaningful combination of props (size × status × icon × disabled × filled/empty) must appear as its own rendered element.
+4. **Use `data-frame` attributes** on the direct wrapper of each component instance, named with a slash-separated path that describes the variant:
+   ```jsx
+   <div data-frame="ComponentName/Variant/Size/State">
+     <MyComponent ... />
+   </div>
+   ```
+   This naming is what Figma MCP uses to identify and label imported frames — keep it consistent and descriptive.
+5. **Use `data-component` on `<section>` elements** to group related configs:
+   ```jsx
+   <section data-component="ComponentName/GroupName">...</section>
+   ```
+6. **No wrappers with visual decoration** — no shadows, borders, background colors, or extra padding on the `data-frame` divs. The component must render exactly as it would in production.
+7. **Use `IsolationFrame.module.css`** (`src/isolation/components/IsolationFrame.module.css`) for the shared `.group`, `.label`, and `.row` layout classes. Do not create per-component CSS files for isolation layout.
+8. **Static values only** — no interactive state, no `useState` hooks in isolation files (except where the component itself requires it, e.g. a counter). Pass `value` as a prop to simulate filled states rather than using live inputs.
+9. **`align-items: flex-start`** on `.row` — components must render at their natural height, not stretched.
+
+### What "all variants and configs" means
+
+For every component added to isolation, the following matrix must be fully covered:
+
+| Axis | What to expose |
+|---|---|
+| Size | Every size the component supports (small, medium, large, etc.) |
+| State | Default (empty), filled/active, disabled, disabled-filled |
+| Status | default, error (empty + filled), success (filled) |
+| Slots | With and without optional slots (icons, leading/trailing elements, etc.) |
+| Sub-parts | With and without label, helper text, counter, or any optional sub-component |
+
+If a combination is visually identical (e.g. medium-filled-error and large-filled-error look the same except size), still include both — Figma needs discrete frames.
+
+### Naming convention for `data-frame`
+
+```
+ComponentName / Category / SubCategory / Size / State
+```
+
+Examples:
+- `TextField/SingleLine/Size/Small/Empty`
+- `TextField/Multiline/Counter/OverLimit/Medium`
+- `Button/Variant/Primary/Size/Large/Disabled`

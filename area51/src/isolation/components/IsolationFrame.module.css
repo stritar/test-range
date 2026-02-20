@@ -1,0 +1,20 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sem-space--sm);
+}
+
+.label {
+  margin: 0;
+  color: var(--sem-text--muted);
+  font-family: var(--core-font-family--body);
+  font-size: var(--core-font-size--small);
+  font-weight: var(--core-font-weight--medium);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sem-space--md);
+  align-items: flex-start;
+}
