@@ -1,0 +1,167 @@
+/* Base */
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--button-border-radius);
+  font-family: var(--button-font-family);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: var(--sem-motion-transition--hover);
+}
+
+.root:disabled {
+  cursor: not-allowed;
+}
+
+/* Label wrapper */
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Text */
+
+.text {
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────── */
+
+.root--small {
+  gap: var(--button-small-gap);
+  height: var(--button-small-height);
+  padding: 0 var(--button-small-padding-x);
+}
+
+.root--small .label {
+  padding: 0 var(--button-small-label-padding-x);
+}
+
+.root--small .text {
+  font-size: var(--button-small-font-size);
+  font-weight: var(--button-small-font-weight);
+  line-height: var(--button-small-line-height);
+}
+
+.root--medium {
+  gap: var(--button-medium-gap);
+  height: var(--button-medium-height);
+  padding: 0 var(--button-medium-padding-x);
+}
+
+.root--medium .label {
+  padding: 0 var(--button-medium-label-padding-x);
+}
+
+.root--medium .text {
+  font-size: var(--button-medium-font-size);
+  font-weight: var(--button-medium-font-weight);
+  line-height: var(--button-medium-line-height);
+}
+
+.root--large {
+  gap: var(--button-large-gap);
+  height: var(--button-large-height);
+  padding: 0 var(--button-large-padding-x);
+}
+
+.root--large .label {
+  padding: 0 var(--button-large-label-padding-x);
+}
+
+.root--large .text {
+  font-size: var(--button-large-font-size);
+  font-weight: var(--button-large-font-weight);
+  line-height: var(--button-large-line-height);
+}
+
+/* ─── Variant: primary ───────────────────────────────────────── */
+
+.root--primary {
+  background: var(--button-primary-background);
+  color: var(--button-primary-color);
+}
+
+.root--primary:hover:not(:disabled) {
+  background: var(--button-primary-background--hover);
+}
+
+.root--primary:active:not(:disabled) {
+  background: var(--button-primary-background--pressed);
+}
+
+.root--primary:disabled {
+  background: var(--button-primary-background--disabled);
+  color: var(--button-primary-color--disabled);
+}
+
+/* ─── Variant: secondary ─────────────────────────────────────── */
+
+.root--secondary {
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-color);
+}
+
+.root--secondary:hover:not(:disabled) {
+  background: var(--button-secondary-background--hover);
+}
+
+.root--secondary:active:not(:disabled) {
+  background: var(--button-secondary-background--pressed);
+}
+
+.root--secondary:disabled {
+  background: var(--button-secondary-background--disabled);
+  color: var(--button-secondary-color--disabled);
+}
+
+/* ─── Variant: outline ───────────────────────────────────────── */
+
+.root--outline {
+  background: var(--button-outline-background);
+  color: var(--button-outline-color);
+  border: var(--button-border-width) solid currentColor;
+}
+
+.root--outline:hover:not(:disabled) {
+  background: var(--button-outline-background--hover);
+  color: var(--button-outline-color--hover);
+}
+
+.root--outline:active:not(:disabled) {
+  background: var(--button-outline-background--pressed);
+  color: var(--button-outline-color--pressed);
+}
+
+.root--outline:disabled {
+  background: var(--button-outline-background--disabled);
+  color: var(--button-outline-color--disabled);
+}
+
+/* ─── Variant: destructive ───────────────────────────────────── */
+
+.root--destructive {
+  background: var(--button-destructive-background);
+  color: var(--button-destructive-color);
+  border: var(--button-border-width) solid currentColor;
+}
+
+.root--destructive:hover:not(:disabled) {
+  background: var(--button-destructive-background--hover);
+}
+
+.root--destructive:active:not(:disabled) {
+  background: var(--button-destructive-background--pressed);
+}
+
+.root--destructive:disabled {
+  background: var(--button-destructive-background--disabled);
+  color: var(--button-destructive-color--disabled);
+}

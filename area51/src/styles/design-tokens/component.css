@@ -24,4 +24,81 @@
   --card-header-line-height: var(--core-line-height--h5);
   --card-width: 256px;
   --card-height: 160px;
+
+  /* Button - shared */
+  --button-border-radius: var(--core-border-radius--xxl);
+  --button-border-width: var(--sem-border-width--md);
+  --button-font-family: var(--core-font-family--body);
+  --button-icon-size: var(--sem-icon-size--sm);
+
+  /* Button - size: small */
+  --button-small-font-size: var(--core-font-size--small);
+  --button-small-line-height: var(--core-line-height--small);
+  --button-small-font-weight: var(--core-font-weight--medium);
+  --button-small-gap: var(--core-space--0100);
+  --button-small-padding-x: var(--core-space--0300);
+  --button-small-height: var(--core-size--0700);
+  --button-small-label-padding-x: var(--core-space--0050);
+
+  /* Button - size: medium */
+  --button-medium-font-size: var(--core-font-size--body);
+  --button-medium-line-height: var(--core-line-height--body);
+  --button-medium-font-weight: var(--core-font-weight--medium);
+  --button-medium-gap: var(--core-space--0200);
+  --button-medium-padding-x: var(--core-space--0400);
+  --button-medium-height: var(--core-size--0800);
+  --button-medium-label-padding-x: var(--core-space--0050);
+
+  /* Button - size: large */
+  --button-large-font-size: var(--core-font-size--h5);
+  --button-large-line-height: var(--core-line-height--h5);
+  --button-large-font-weight: var(--core-font-weight--medium);
+  --button-large-gap: var(--core-space--0200);
+  --button-large-padding-x: var(--core-space--0600);
+  --button-large-height: var(--core-size--0900);
+  --button-large-label-padding-x: var(--core-space--0050);
+
+  /* Button - variant: primary */
+  --button-primary-background: var(--core-color-primary--0700);
+  --button-primary-background--hover: var(--core-color-primary--0600);
+  --button-primary-background--pressed: var(--core-color-primary--0800);
+  --button-primary-background--disabled: var(--sem-background--subtle);
+  --button-primary-color: var(--sem-text--inverted);
+  --button-primary-color--disabled: var(--sem-text--light);
+
+  /* Button - variant: secondary */
+  --button-secondary-background: var(--core-color-primary--0050);
+  --button-secondary-background--hover: var(--core-color-primary--0100);
+  --button-secondary-background--pressed: var(--core-color-primary--0200);
+  --button-secondary-background--disabled: var(--sem-background--subtle);
+  --button-secondary-color: var(--core-color-primary--0900);
+  --button-secondary-color--disabled: var(--sem-text--light);
+
+  /* Button - variant: outline */
+  --button-outline-background: transparent;
+  --button-outline-background--hover: var(--sem-background--light);
+  --button-outline-background--pressed: var(--sem-background--subtle);
+  --button-outline-background--disabled: transparent;
+  --button-outline-color: var(--core-color-neutral--1200);
+  --button-outline-color--hover: var(--core-color-neutral--1100);
+  --button-outline-color--pressed: var(--core-color-neutral--1300);
+  --button-outline-color--disabled: var(--sem-text--light);
+  --button-outline-border-color: var(--core-color-neutral--1200);
+  --button-outline-border-color--hover: var(--core-color-neutral--1100);
+  --button-outline-border-color--pressed: var(--core-color-neutral--1300);
+  --button-outline-border-color--disabled: var(--sem-text--light);
+
+  /* Button - variant: destructive */
+  --button-destructive-background: transparent;
+  --button-destructive-background--hover: var(--sem-status-error--background--subtle);
+  --button-destructive-background--pressed: var(--sem-status-error--background);
+  --button-destructive-background--disabled: transparent;
+  --button-destructive-color: var(--sem-status-error--text);
+  --button-destructive-color--hover: var(--sem-status-error--text);
+  --button-destructive-color--pressed: var(--sem-status-error--text);
+  --button-destructive-color--disabled: var(--sem-text--light);
+  --button-destructive-border-color: var(--sem-status-error--text);
+  --button-destructive-border-color--hover: var(--sem-status-error--text);
+  --button-destructive-border-color--pressed: var(--sem-status-error--text);
+  --button-destructive-border-color--disabled: var(--sem-text--light);
 }

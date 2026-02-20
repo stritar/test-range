@@ -152,3 +152,11 @@ Produce no output.
 Do not guess or approximate missing values.
 Do not partially render the component.
 Implementation must only proceed when the Figma specification is 100% complete and unambiguous.
+
+## Playground
+
+Every time a new component is introduced, it must also be added to `src/App.jsx` (the playground).
+
+- Add representative examples covering all meaningful prop combinations (variants, sizes, states, icon configs, etc.)
+- Use inline styles for playground layout only — never for component styling
+- Existing playground content must not be removed or reorganised

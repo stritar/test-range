@@ -1,8 +1,10 @@
+import { ButtonSection } from './sections/ButtonSection';
 import { CardSection } from './sections/CardSection';
 import { LogoSection } from './sections/LogoSection';
 import styles from './Playground.module.css';
 
 const sections = [
+  { id: 'button', label: 'Button' },
   { id: 'card', label: 'Card' },
   { id: 'logo', label: 'Logo' },
 ];
@@ -24,6 +26,11 @@ export function Playground() {
       </nav>
 
       <main className={styles.main}>
+        <section id="button" className={styles.section}>
+          <h2 className={styles.sectionTitle}>Button</h2>
+          <ButtonSection />
+        </section>
+
         <section id="card" className={styles.section}>
           <h2 className={styles.sectionTitle}>Card</h2>
           <CardSection />

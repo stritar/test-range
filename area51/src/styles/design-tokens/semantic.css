@@ -65,10 +65,13 @@
 
   /* Status */
   --sem-status-error--background: rgb(255 219 220);
+  --sem-status-error--background--subtle: rgb(255 233 234);
   --sem-status-error--text: rgb(178 1 3);
   --sem-status-success--background: rgb(204 247 241);
+  --sem-status-success--background--subtle: rgb(224 250 247);
   --sem-status-success--text: rgb(0 113 88);
   --sem-status-warning--background: rgb(255 228 204);
+  --sem-status-warning--background--subtle: rgb(255 239 224);
   --sem-status-warning--text: rgb(178 46 0);
 
   /* Text */
