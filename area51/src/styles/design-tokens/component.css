@@ -88,6 +88,88 @@
   --button-outline-border-color--pressed: var(--core-color-neutral--1300);
   --button-outline-border-color--disabled: var(--sem-text--light);
 
+  /* TextField - shared */
+  --textfield-border-radius: var(--core-border-radius--sm);
+  --textfield-border-width: var(--sem-border-width--sm);
+  --textfield-font-family: var(--core-font-family--body);
+  --textfield-icon-size: var(--sem-icon-size--sm);
+
+  /* TextField - size: small */
+  --textfield-small-height: var(--core-size--0700);
+  --textfield-small-font-size: var(--core-font-size--small);
+  --textfield-small-line-height: var(--core-line-height--small);
+  --textfield-small-font-weight: var(--core-font-weight--regular);
+  --textfield-small-padding-x: var(--core-space--0300);
+  --textfield-small-padding-y: var(--core-space--0200);
+  --textfield-small-gap: var(--core-space--0100);
+
+  /* TextField - size: medium */
+  --textfield-medium-height: var(--core-size--0800);
+  --textfield-medium-font-size: var(--core-font-size--body);
+  --textfield-medium-line-height: var(--core-line-height--body);
+  --textfield-medium-font-weight: var(--core-font-weight--regular);
+  --textfield-medium-padding-x: var(--core-space--0400);
+  --textfield-medium-padding-y: var(--core-space--0200);
+  --textfield-medium-gap: var(--core-space--0200);
+
+  /* TextField - size: large */
+  --textfield-large-height: var(--core-size--0900);
+  --textfield-large-font-size: var(--core-font-size--h5);
+  --textfield-large-line-height: var(--core-line-height--h5);
+  --textfield-large-font-weight: var(--core-font-weight--regular);
+  --textfield-large-padding-x: var(--core-space--0600);
+  --textfield-large-padding-y: var(--core-space--0300);
+  --textfield-large-gap: var(--core-space--0200);
+
+  /* TextField - input: default */
+  --textfield-background: var(--core-color-neutral--0000);
+  --textfield-background--hover: var(--core-color-neutral--0050);
+  --textfield-background--focus: var(--core-color-neutral--0000);
+  --textfield-background--disabled: var(--core-color-neutral--0100);
+  --textfield-border-color: var(--core-color-neutral--0400);
+  --textfield-border-color--hover: var(--core-color-neutral--0700);
+  --textfield-border-color--focus: var(--core-color-primary--0700);
+  --textfield-border-color--disabled: var(--core-color-neutral--0300);
+  --textfield-color: var(--sem-text--neutral);
+  --textfield-color--disabled: var(--sem-text--light);
+  --textfield-placeholder-color: var(--sem-text--light);
+
+  /* TextField - label */
+  --textfield-label-color: var(--sem-text--muted);
+  --textfield-label-color--focus: var(--core-color-primary--0800);
+  --textfield-label-color--disabled: var(--sem-text--light);
+  --textfield-label-font-size: var(--core-font-size--small);
+  --textfield-label-font-weight: var(--core-font-weight--medium);
+  --textfield-label-line-height: var(--core-line-height--small);
+  --textfield-label-gap: var(--core-space--0100);
+
+  /* TextField - helper text */
+  --textfield-helper-color: var(--sem-text--muted);
+  --textfield-helper-font-size: var(--core-font-size--small);
+  --textfield-helper-line-height: var(--core-line-height--small);
+  --textfield-helper-gap: var(--core-space--0100);
+
+  /* TextField - validation: error */
+  --textfield-error-border-color: var(--sem-status-error--text);
+  --textfield-error-border-color--hover: var(--sem-status-error--text);
+  --textfield-error-border-color--focus: var(--sem-status-error--text);
+  --textfield-error-label-color: var(--sem-status-error--text);
+  --textfield-error-helper-color: var(--sem-status-error--text);
+
+  /* TextField - multiline (textarea) */
+  --textfield-multiline-min-height-small: 80px;
+  --textfield-multiline-min-height-medium: 96px;
+  --textfield-multiline-min-height-large: 112px;
+
+  /* TextField - counter */
+  --textfield-counter-color: var(--sem-text--muted);
+  --textfield-counter-color--over-limit: var(--sem-status-error--text);
+
+  /* TextField - validation: success */
+  --textfield-success-border-color: var(--sem-status-success--text);
+  --textfield-success-border-color--focus: var(--sem-status-success--text);
+  --textfield-success-helper-color: var(--sem-status-success--text);
+
   /* Button - variant: destructive */
   --button-destructive-background: transparent;
   --button-destructive-background--hover: var(--sem-status-error--background--subtle);

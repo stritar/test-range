@@ -1,12 +1,14 @@
 import { ButtonSection } from './sections/ButtonSection';
 import { CardSection } from './sections/CardSection';
 import { LogoSection } from './sections/LogoSection';
+import { TextFieldSection } from './sections/TextFieldSection';
 import styles from './Playground.module.css';
 
 const sections = [
   { id: 'button', label: 'Button' },
   { id: 'card', label: 'Card' },
   { id: 'logo', label: 'Logo' },
+  { id: 'textfield', label: 'TextField' },
 ];
 
 export function Playground() {
@@ -39,6 +41,11 @@ export function Playground() {
         <section id="logo" className={styles.section}>
           <h2 className={styles.sectionTitle}>Logo</h2>
           <LogoSection />
+        </section>
+
+        <section id="textfield" className={styles.section}>
+          <h2 className={styles.sectionTitle}>TextField</h2>
+          <TextFieldSection />
         </section>
       </main>
     </div>

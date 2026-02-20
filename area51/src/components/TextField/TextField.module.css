@@ -1,0 +1,236 @@
+/* ─── Root ───────────────────────────────────────────────────── */
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--textfield-font-family);
+}
+
+/* ─── Label ──────────────────────────────────────────────────── */
+
+.label {
+  margin: 0 0 var(--textfield-label-gap);
+  color: var(--textfield-label-color);
+  font-family: var(--textfield-font-family);
+  font-size: var(--textfield-label-font-size);
+  font-weight: var(--textfield-label-font-weight);
+  line-height: var(--textfield-label-line-height);
+  transition: var(--sem-motion-transition--focus);
+}
+
+/* ─── Input wrapper ──────────────────────────────────────────── */
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--textfield-background);
+  border: var(--textfield-border-width) solid var(--textfield-border-color);
+  border-radius: var(--textfield-border-radius);
+  transition: var(--sem-motion-transition--hover);
+  box-sizing: border-box;
+}
+
+.inputWrapper:hover:not(:has(.input:disabled)) {
+  background: var(--textfield-background--hover);
+  border-color: var(--textfield-border-color--hover);
+}
+
+.inputWrapper:focus-within:not(:has(.input:disabled)) {
+  background: var(--textfield-background--focus);
+  border-color: var(--textfield-border-color--focus);
+}
+
+.inputWrapper:has(.input:disabled) {
+  background: var(--textfield-background--disabled);
+  border-color: var(--textfield-border-color--disabled);
+  cursor: not-allowed;
+}
+
+/* ─── Input ──────────────────────────────────────────────────── */
+
+.input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--textfield-color);
+  font-family: var(--textfield-font-family);
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--textfield-placeholder-color);
+}
+
+.input:disabled {
+  color: var(--textfield-color--disabled);
+  cursor: not-allowed;
+}
+
+/* ─── Icons ──────────────────────────────────────────────────── */
+
+.iconLeft,
+.iconRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--textfield-placeholder-color);
+}
+
+/* ─── Footer (helper + counter row) ─────────────────────────── */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--textfield-helper-gap);
+  margin-top: var(--textfield-helper-gap);
+}
+
+.helper {
+  margin: 0;
+  color: var(--textfield-helper-color);
+  font-family: var(--textfield-font-family);
+  font-size: var(--textfield-helper-font-size);
+  line-height: var(--textfield-helper-line-height);
+}
+
+.counter {
+  margin: 0;
+  flex-shrink: 0;
+  color: var(--textfield-counter-color);
+  font-family: var(--textfield-font-family);
+  font-size: var(--textfield-helper-font-size);
+  line-height: var(--textfield-helper-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.counter--over {
+  color: var(--textfield-counter-color--over-limit);
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────── */
+
+/* Single-line sizes */
+
+.root--small:not(.root--multiline) .inputWrapper {
+  height: var(--textfield-small-height);
+  gap: var(--textfield-small-gap);
+  padding: 0 var(--textfield-small-padding-x);
+}
+
+.root--small .input {
+  font-size: var(--textfield-small-font-size);
+  font-weight: var(--textfield-small-font-weight);
+  line-height: var(--textfield-small-line-height);
+}
+
+.root--medium:not(.root--multiline) .inputWrapper {
+  height: var(--textfield-medium-height);
+  gap: var(--textfield-medium-gap);
+  padding: 0 var(--textfield-medium-padding-x);
+}
+
+.root--medium .input {
+  font-size: var(--textfield-medium-font-size);
+  font-weight: var(--textfield-medium-font-weight);
+  line-height: var(--textfield-medium-line-height);
+}
+
+.root--large:not(.root--multiline) .inputWrapper {
+  height: var(--textfield-large-height);
+  gap: var(--textfield-large-gap);
+  padding: 0 var(--textfield-large-padding-x);
+}
+
+.root--large .input {
+  font-size: var(--textfield-large-font-size);
+  font-weight: var(--textfield-large-font-weight);
+  line-height: var(--textfield-large-line-height);
+}
+
+/* ─── Multiline (textarea) ───────────────────────────────────── */
+
+.root--multiline .inputWrapper {
+  height: auto;
+  align-items: flex-start;
+}
+
+.root--multiline .input {
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.root--multiline.root--small .inputWrapper {
+  padding: var(--textfield-small-padding-y) var(--textfield-small-padding-x);
+}
+
+.root--multiline.root--small .input {
+  min-height: var(--textfield-multiline-min-height-small);
+}
+
+.root--multiline.root--medium .inputWrapper {
+  padding: var(--textfield-medium-padding-y) var(--textfield-medium-padding-x);
+}
+
+.root--multiline.root--medium .input {
+  min-height: var(--textfield-multiline-min-height-medium);
+}
+
+.root--multiline.root--large .inputWrapper {
+  padding: var(--textfield-large-padding-y) var(--textfield-large-padding-x);
+}
+
+.root--multiline.root--large .input {
+  min-height: var(--textfield-multiline-min-height-large);
+}
+
+/* ─── Status: error ──────────────────────────────────────────── */
+
+.root--error .inputWrapper {
+  border-color: var(--textfield-error-border-color);
+}
+
+.root--error .inputWrapper:hover:not(:has(.input:disabled)) {
+  border-color: var(--textfield-error-border-color--hover);
+}
+
+.root--error .inputWrapper:focus-within:not(:has(.input:disabled)) {
+  border-color: var(--textfield-error-border-color--focus);
+}
+
+.root--error .label {
+  color: var(--textfield-error-label-color);
+}
+
+.root--error .helper {
+  color: var(--textfield-error-helper-color);
+}
+
+/* ─── Status: success ────────────────────────────────────────── */
+
+.root--success .inputWrapper {
+  border-color: var(--textfield-success-border-color);
+}
+
+.root--success .inputWrapper:focus-within:not(:has(.input:disabled)) {
+  border-color: var(--textfield-success-border-color--focus);
+}
+
+.root--success .helper {
+  color: var(--textfield-success-helper-color);
+}
+
+/* ─── Focus-within label color ───────────────────────────────── */
+
+.root:not(.root--error) .inputWrapper:focus-within ~ .label,
+.root:not(.root--error):focus-within .label {
+  color: var(--textfield-label-color--focus);
+}
+
+.root:has(.input:disabled) .label {
+  color: var(--textfield-label-color--disabled);
+}
