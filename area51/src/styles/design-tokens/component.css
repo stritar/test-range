@@ -112,15 +112,6 @@
   --textfield-medium-padding-y: var(--core-space--0200);
   --textfield-medium-gap: var(--core-space--0200);
 
-  /* TextField - size: large */
-  --textfield-large-height: var(--core-size--0900);
-  --textfield-large-font-size: var(--core-font-size--h5);
-  --textfield-large-line-height: var(--core-line-height--h5);
-  --textfield-large-font-weight: var(--core-font-weight--regular);
-  --textfield-large-padding-x: var(--core-space--0600);
-  --textfield-large-padding-y: var(--core-space--0300);
-  --textfield-large-gap: var(--core-space--0200);
-
   /* TextField - input: default */
   --textfield-background: var(--core-color-neutral--0000);
   --textfield-background--hover: var(--core-color-neutral--0050);
@@ -159,7 +150,6 @@
   /* TextField - multiline (textarea) */
   --textfield-multiline-min-height-small: 80px;
   --textfield-multiline-min-height-medium: 96px;
-  --textfield-multiline-min-height-large: 112px;
 
   /* TextField - counter */
   --textfield-counter-color: var(--sem-text--muted);

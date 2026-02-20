@@ -19,7 +19,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         playground: resolve(__dirname, "playground.html"),
-        isolation: resolve(__dirname, "isolation.html"),
       },
     },
   },

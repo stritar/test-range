@@ -11,7 +11,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" />
-          <TextField size="large" label="Large" placeholder="Placeholder" />
         </div>
       </div>
 
@@ -21,7 +20,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" value="Input value" />
           <TextField size="medium" label="Medium" value="Input value" />
-          <TextField size="large" label="Large" value="Input value" />
         </div>
       </div>
 
@@ -31,7 +29,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" placeholder="Small" />
           <TextField size="medium" placeholder="Medium" />
-          <TextField size="large" placeholder="Large" />
         </div>
       </div>
 
@@ -41,7 +38,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" helperText="Helper text" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" helperText="Helper text" />
-          <TextField size="large" label="Large" placeholder="Placeholder" helperText="Helper text" />
         </div>
       </div>
 
@@ -51,7 +47,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" iconLeft="placeholder" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" iconLeft="placeholder" />
-          <TextField size="large" label="Large" placeholder="Placeholder" iconLeft="placeholder" />
         </div>
       </div>
 
@@ -61,7 +56,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" iconRight="placeholder" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" iconRight="placeholder" />
-          <TextField size="large" label="Large" placeholder="Placeholder" iconRight="placeholder" />
         </div>
       </div>
 
@@ -71,7 +65,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" iconLeft="placeholder" iconRight="placeholder" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" iconLeft="placeholder" iconRight="placeholder" />
-          <TextField size="large" label="Large" placeholder="Placeholder" iconLeft="placeholder" iconRight="placeholder" />
         </div>
       </div>
 
@@ -81,7 +74,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" status="error" helperText="This field is required" />
           <TextField size="medium" label="Medium" placeholder="Placeholder" status="error" helperText="This field is required" />
-          <TextField size="large" label="Large" placeholder="Placeholder" status="error" helperText="This field is required" />
         </div>
       </div>
 
@@ -91,7 +83,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" value="Bad input" status="error" helperText="This field is required" />
           <TextField size="medium" label="Medium" value="Bad input" status="error" helperText="This field is required" />
-          <TextField size="large" label="Large" value="Bad input" status="error" helperText="This field is required" />
         </div>
       </div>
 
@@ -101,7 +92,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" value="Valid value" status="success" helperText="Looks good!" />
           <TextField size="medium" label="Medium" value="Valid value" status="success" helperText="Looks good!" />
-          <TextField size="large" label="Large" value="Valid value" status="success" helperText="Looks good!" />
         </div>
       </div>
 
@@ -111,7 +101,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" placeholder="Placeholder" disabled />
           <TextField size="medium" label="Medium" placeholder="Placeholder" disabled />
-          <TextField size="large" label="Large" placeholder="Placeholder" disabled />
         </div>
       </div>
 
@@ -121,7 +110,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField size="small" label="Small" value="Input value" disabled />
           <TextField size="medium" label="Medium" value="Input value" disabled />
-          <TextField size="large" label="Large" value="Input value" disabled />
         </div>
       </div>
 
@@ -133,7 +121,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" placeholder="Placeholder" />
           <TextField multiline size="medium" label="Medium" placeholder="Placeholder" />
-          <TextField multiline size="large" label="Large" placeholder="Placeholder" />
         </div>
       </div>
 
@@ -143,7 +130,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" value="This is some longer content that spans a few words." />
           <TextField multiline size="medium" label="Medium" value="This is some longer content that spans a few words." />
-          <TextField multiline size="large" label="Large" value="This is some longer content that spans a few words." />
         </div>
       </div>
 
@@ -153,7 +139,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" placeholder="Placeholder" maxLength={120} />
           <TextField multiline size="medium" label="Medium" placeholder="Placeholder" maxLength={120} />
-          <TextField multiline size="large" label="Large" placeholder="Placeholder" maxLength={120} />
         </div>
       </div>
 
@@ -163,17 +148,15 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" placeholder="Placeholder" helperText="Describe your issue" maxLength={120} />
           <TextField multiline size="medium" label="Medium" placeholder="Placeholder" helperText="Describe your issue" maxLength={120} />
-          <TextField multiline size="large" label="Large" placeholder="Placeholder" helperText="Describe your issue" maxLength={120} />
         </div>
       </div>
 
-      {/* Multiline – near limit */}
+      {/* Multiline – over limit */}
       <div className={styles.group}>
-        <p className={styles.groupLabel}>Multiline – near limit (over)</p>
+        <p className={styles.groupLabel}>Multiline – over limit</p>
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" value="This value is intentionally way too long and exceeds the maximum character limit set on this field." maxLength={60} helperText="Too long" status="error" />
           <TextField multiline size="medium" label="Medium" value="This value is intentionally way too long and exceeds the maximum character limit set on this field." maxLength={60} helperText="Too long" status="error" />
-          <TextField multiline size="large" label="Large" value="This value is intentionally way too long and exceeds the maximum character limit set on this field." maxLength={60} helperText="Too long" status="error" />
         </div>
       </div>
 
@@ -183,7 +166,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" placeholder="Placeholder" status="error" helperText="This field is required" maxLength={120} />
           <TextField multiline size="medium" label="Medium" placeholder="Placeholder" status="error" helperText="This field is required" maxLength={120} />
-          <TextField multiline size="large" label="Large" placeholder="Placeholder" status="error" helperText="This field is required" maxLength={120} />
         </div>
       </div>
 
@@ -193,7 +175,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" value="Valid content here." status="success" helperText="Looks good!" maxLength={120} />
           <TextField multiline size="medium" label="Medium" value="Valid content here." status="success" helperText="Looks good!" maxLength={120} />
-          <TextField multiline size="large" label="Large" value="Valid content here." status="success" helperText="Looks good!" maxLength={120} />
         </div>
       </div>
 
@@ -203,7 +184,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" placeholder="Placeholder" disabled />
           <TextField multiline size="medium" label="Medium" placeholder="Placeholder" disabled />
-          <TextField multiline size="large" label="Large" placeholder="Placeholder" disabled />
         </div>
       </div>
 
@@ -213,7 +193,6 @@ export function TextFieldSection() {
         <div className={styles.row}>
           <TextField multiline size="small" label="Small" value="Some content that cannot be edited." disabled />
           <TextField multiline size="medium" label="Medium" value="Some content that cannot be edited." disabled />
-          <TextField multiline size="large" label="Large" value="Some content that cannot be edited." disabled />
         </div>
       </div>
 

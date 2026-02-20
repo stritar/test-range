@@ -1,9 +1,0 @@
-.page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sem-space--xl);
-  padding: var(--sem-space--xl);
-  background: var(--sem-background--neutral);
-  min-height: 100vh;
-  box-sizing: border-box;
-}

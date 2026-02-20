@@ -5,7 +5,7 @@ import styles from './TextField.module.css';
 /**
  * TextField component.
  *
- * @param {'small'|'medium'|'large'} [size='medium'] - Size
+ * @param {'small'|'medium'} [size='medium'] - Size
  * @param {'default'|'error'|'success'} [status='default'] - Validation status
  * @param {string} [label] - Label text
  * @param {string} [placeholder] - Placeholder text

@@ -139,18 +139,6 @@
   line-height: var(--textfield-medium-line-height);
 }
 
-.root--large:not(.root--multiline) .inputWrapper {
-  height: var(--textfield-large-height);
-  gap: var(--textfield-large-gap);
-  padding: 0 var(--textfield-large-padding-x);
-}
-
-.root--large .input {
-  font-size: var(--textfield-large-font-size);
-  font-weight: var(--textfield-large-font-weight);
-  line-height: var(--textfield-large-line-height);
-}
-
 /* ─── Multiline (textarea) ───────────────────────────────────── */
 
 .root--multiline .inputWrapper {
@@ -178,14 +166,6 @@
 
 .root--multiline.root--medium .input {
   min-height: var(--textfield-multiline-min-height-medium);
-}
-
-.root--multiline.root--large .inputWrapper {
-  padding: var(--textfield-large-padding-y) var(--textfield-large-padding-x);
-}
-
-.root--multiline.root--large .input {
-  min-height: var(--textfield-multiline-min-height-large);
 }
 
 /* ─── Status: error ──────────────────────────────────────────── */
