@@ -5,11 +5,15 @@
 import textSvg from '../../assets/icons/text.svg?raw';
 import placeholderSvg from '../../assets/icons/placeholder.svg?raw';
 import imageSvg from '../../assets/icons/image.svg?raw';
+import errorSvg from '../../assets/icons/error.svg?raw';
+import successSvg from '../../assets/icons/success.svg?raw';
 
 const icons = {
   text: textSvg,
   placeholder: placeholderSvg,
   image: imageSvg,
+  error: errorSvg,
+  success: successSvg,
 };
 
 const sizeAttrs = /(width|height)="[^"]+"/g;

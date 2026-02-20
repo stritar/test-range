@@ -3,26 +3,27 @@ import { Icon } from '../Icon/Icon';
 import styles from './TextField.module.css';
 
 /**
- * TextField component.
+ * TextField component. Renders a labeled input or textarea with optional
+ * icons, helper text, validation states, and character counter.
  *
- * @param {'small'|'medium'} [size='medium'] - Size
- * @param {'default'|'error'|'success'} [status='default'] - Validation status
- * @param {string} [label] - Label text
+ * @param {'small'|'medium'} [size='medium'] - Size variant
+ * @param {'error'|'success'} [status] - Validation state
+ * @param {string} [label] - Label text shown above the input
  * @param {string} [placeholder] - Placeholder text
- * @param {string} [helperText] - Helper / error / success message below the input
- * @param {string} [iconLeft] - Icon name for leading slot (single-line only)
- * @param {string} [iconRight] - Icon name for trailing slot (single-line only)
+ * @param {string} [helperText] - Helper / validation message below the input
+ * @param {string} [iconLeft] - Icon name for the left slot
+ * @param {string} [iconRight] - Icon name for the right slot
  * @param {boolean} [disabled=false] - Disabled state
- * @param {string} [value] - Controlled value (for "filled" visual demo)
- * @param {boolean} [multiline=false] - Renders a textarea instead of an input
- * @param {number} [maxLength] - Enables character counter when set
- * @param {string} [className] - Additional class names
+ * @param {string} [value] - Controlled value
+ * @param {boolean} [multiline=false] - Renders a <textarea> instead of <input>
+ * @param {number} [maxLength] - Max character count; shows counter when set
+ * @param {Function} [onChange] - Change handler
  */
 export function TextField({
   size = 'medium',
-  status = 'default',
+  status,
   label,
-  placeholder = 'Placeholder',
+  placeholder,
   helperText,
   iconLeft,
   iconRight,
@@ -30,77 +31,81 @@ export function TextField({
   value,
   multiline = false,
   maxLength,
-  className = '',
+  onChange,
   ...rest
 }) {
-  const uid = useId();
-  const initialCount = value ? value.length : 0;
-  const [charCount, setCharCount] = useState(initialCount);
+  const id = useId();
+  const isControlled = value !== undefined;
+  const [internalValue, setInternalValue] = useState(isControlled ? value : '');
+  const currentValue = isControlled ? value : internalValue;
+  const charCount = currentValue?.length ?? 0;
 
-  const overLimit = maxLength !== undefined && charCount > maxLength;
+  const handleChange = (e) => {
+    if (!isControlled) setInternalValue(e.target.value);
+    onChange?.(e);
+  };
 
   const rootClass = [
     styles.root,
     styles[`root--${size}`],
-    styles[`root--${status}`],
-    multiline ? styles['root--multiline'] : null,
-    className,
+    status && styles[`root--${status}`],
+    multiline && styles['root--multiline'],
+    disabled && styles['root--disabled'],
   ].filter(Boolean).join(' ');
 
-  const hasFooter = helperText || maxLength !== undefined;
-
   const sharedInputProps = {
-    id: uid,
+    id,
     className: styles.input,
     placeholder,
     disabled,
-    value,
-    readOnly: value !== undefined,
-    onChange: (e) => setCharCount(e.target.value.length),
+    value: currentValue,
+    onChange: handleChange,
+    ...rest,
   };
+
+  const hasStatusIcon = status === 'error' || status === 'success';
+  const showCounter = multiline && maxLength !== undefined;
+  const showFooter = helperText || showCounter;
 
   return (
     <div className={rootClass}>
       {label && (
-        <label className={styles.label} htmlFor={uid}>
+        <label htmlFor={id} className={styles.label}>
           {label}
         </label>
       )}
+
       <div className={styles.inputWrapper}>
-        {!multiline && iconLeft && (
-          <span className={styles.iconLeft}>
-            <Icon name={iconLeft} size="sm" ariaLabel="" />
-          </span>
-        )}
+        {iconLeft && <Icon name={iconLeft} size="sm" ariaLabel="" />}
         {multiline ? (
-          <textarea
-            {...sharedInputProps}
-            maxLength={maxLength}
-            {...rest}
-          />
+          <textarea {...sharedInputProps} />
         ) : (
-          <input
-            {...sharedInputProps}
-            maxLength={maxLength}
-            {...rest}
-          />
+          <input {...sharedInputProps} />
         )}
-        {!multiline && iconRight && (
-          <span className={styles.iconRight}>
-            <Icon name={iconRight} size="sm" ariaLabel="" />
-          </span>
-        )}
+        {iconRight && <Icon name={iconRight} size="sm" ariaLabel="" />}
       </div>
-      {hasFooter && (
+
+      {showFooter && (
         <div className={styles.footer}>
-          {helperText
-            ? <p className={styles.helper}>{helperText}</p>
-            : <span />
-          }
-          {maxLength !== undefined && (
-            <p className={[styles.counter, overLimit ? styles['counter--over'] : null].filter(Boolean).join(' ')}>
-              {charCount}&nbsp;/&nbsp;{maxLength}
-            </p>
+          <div className={styles.footerLeft}>
+            {hasStatusIcon && (
+              <Icon
+                name={status}
+                size="xs"
+                ariaLabel={status === 'error' ? 'Error' : 'Success'}
+              />
+            )}
+            {helperText && (
+              <span className={styles.helperText}>{helperText}</span>
+            )}
+          </div>
+          {showCounter && (
+            <span className={[
+              styles.counter,
+              charCount > maxLength && styles['counter--over'],
+            ].filter(Boolean).join(' ')}>
+              {charCount} / {maxLength}
+            </span>
           )}
         </div>
       )}

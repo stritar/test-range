@@ -1,124 +1,124 @@
-/* ─── Root ───────────────────────────────────────────────────── */
+/* ─── Root ──────────────────────────────────────────────────── */
 
 .root {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  font-family: var(--textfield-font-family);
+  gap: var(--textfield-label-gap);
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* ─── Label ──────────────────────────────────────────────────── */
+/* ─── Label ─────────────────────────────────────────────────── */
 
 .label {
-  margin: 0 0 var(--textfield-label-gap);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   color: var(--textfield-label-color);
   font-family: var(--textfield-font-family);
   font-size: var(--textfield-label-font-size);
   font-weight: var(--textfield-label-font-weight);
   line-height: var(--textfield-label-line-height);
-  transition: var(--sem-motion-transition--focus);
+  font-style: normal;
 }
 
-/* ─── Input wrapper ──────────────────────────────────────────── */
+/* ─── Input wrapper ─────────────────────────────────────────── */
 
 .inputWrapper {
-  position: relative;
   display: flex;
   align-items: center;
-  background: var(--textfield-background);
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
   border: var(--textfield-border-width) solid var(--textfield-border-color);
   border-radius: var(--textfield-border-radius);
+  background: var(--textfield-background);
   transition: var(--sem-motion-transition--hover);
-  box-sizing: border-box;
 }
 
-.inputWrapper:hover:not(:has(.input:disabled)) {
+.inputWrapper:hover {
   background: var(--textfield-background--hover);
   border-color: var(--textfield-border-color--hover);
 }
 
-.inputWrapper:focus-within:not(:has(.input:disabled)) {
+.inputWrapper:focus-within {
   background: var(--textfield-background--focus);
   border-color: var(--textfield-border-color--focus);
 }
 
-.inputWrapper:has(.input:disabled) {
-  background: var(--textfield-background--disabled);
-  border-color: var(--textfield-border-color--disabled);
-  cursor: not-allowed;
-}
-
-/* ─── Input ──────────────────────────────────────────────────── */
+/* ─── Input / Textarea ──────────────────────────────────────── */
 
 .input {
   flex: 1;
   min-width: 0;
-  background: transparent;
   border: none;
+  background: transparent;
   outline: none;
-  color: var(--textfield-color);
   font-family: var(--textfield-font-family);
+  color: var(--textfield-color);
+  font-style: normal;
+  padding: 0;
   box-sizing: border-box;
 }
 
 .input::placeholder {
-  color: var(--textfield-placeholder-color);
+  color: var(--textfield-color--placeholder);
 }
 
-.input:disabled {
-  color: var(--textfield-color--disabled);
-  cursor: not-allowed;
+.root--multiline .input {
+  resize: vertical;
+  width: 100%;
+  align-self: stretch;
 }
 
-/* ─── Icons ──────────────────────────────────────────────────── */
-
-.iconLeft,
-.iconRight {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  color: var(--textfield-placeholder-color);
-}
-
-/* ─── Footer (helper + counter row) ─────────────────────────── */
+/* ─── Footer ────────────────────────────────────────────────── */
 
 .footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--textfield-helper-gap);
-  margin-top: var(--textfield-helper-gap);
+  gap: var(--textfield-label-gap);
+  width: 100%;
 }
 
-.helper {
-  margin: 0;
-  color: var(--textfield-helper-color);
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--textfield-label-gap);
+  flex: 1;
+  min-width: 0;
+}
+
+.helperText {
   font-family: var(--textfield-font-family);
   font-size: var(--textfield-helper-font-size);
   line-height: var(--textfield-helper-line-height);
+  font-style: normal;
+  color: var(--textfield-helper-color);
 }
 
 .counter {
-  margin: 0;
-  flex-shrink: 0;
-  color: var(--textfield-counter-color);
   font-family: var(--textfield-font-family);
-  font-size: var(--textfield-helper-font-size);
-  line-height: var(--textfield-helper-line-height);
-  font-variant-numeric: tabular-nums;
+  font-size: var(--textfield-label-font-size);
+  line-height: var(--textfield-label-line-height);
+  font-weight: var(--textfield-label-font-weight--counter);
+  color: var(--textfield-helper-color);
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .counter--over {
   color: var(--textfield-counter-color--over-limit);
 }
 
-/* ─── Sizes ──────────────────────────────────────────────────── */
+/* ─── Size: small ───────────────────────────────────────────── */
 
-/* Single-line sizes */
-
-.root--small:not(.root--multiline) .inputWrapper {
+.root--small .inputWrapper {
   height: var(--textfield-small-height);
+  padding: var(--textfield-small-padding-y) var(--textfield-small-padding-x);
   gap: var(--textfield-small-gap);
-  padding: 0 var(--textfield-small-padding-x);
 }
 
 .root--small .input {
@@ -127,10 +127,12 @@
   line-height: var(--textfield-small-line-height);
 }
 
-.root--medium:not(.root--multiline) .inputWrapper {
+/* ─── Size: medium ──────────────────────────────────────────── */
+
+.root--medium .inputWrapper {
   height: var(--textfield-medium-height);
+  padding: var(--textfield-medium-padding-y) var(--textfield-medium-padding-x);
   gap: var(--textfield-medium-gap);
-  padding: 0 var(--textfield-medium-padding-x);
 }
 
 .root--medium .input {
@@ -139,78 +141,79 @@
   line-height: var(--textfield-medium-line-height);
 }
 
-/* ─── Multiline (textarea) ───────────────────────────────────── */
+/* ─── Multiline ─────────────────────────────────────────────── */
 
 .root--multiline .inputWrapper {
   height: auto;
   align-items: flex-start;
 }
 
-.root--multiline .input {
-  resize: vertical;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .root--multiline.root--small .inputWrapper {
-  padding: var(--textfield-small-padding-y) var(--textfield-small-padding-x);
-}
-
-.root--multiline.root--small .input {
   min-height: var(--textfield-multiline-min-height-small);
 }
 
-.root--multiline.root--medium .inputWrapper {
-  padding: var(--textfield-medium-padding-y) var(--textfield-medium-padding-x);
+.root--multiline.root--small .input {
+  min-height: calc(var(--textfield-multiline-min-height-small) - 2 * var(--textfield-small-padding-y));
 }
 
-.root--multiline.root--medium .input {
+.root--multiline.root--medium .inputWrapper {
   min-height: var(--textfield-multiline-min-height-medium);
 }
 
-/* ─── Status: error ──────────────────────────────────────────── */
-
-.root--error .inputWrapper {
-  border-color: var(--textfield-error-border-color);
+.root--multiline.root--medium .input {
+  min-height: calc(var(--textfield-multiline-min-height-medium) - 2 * var(--textfield-medium-padding-y));
 }
 
-.root--error .inputWrapper:hover:not(:has(.input:disabled)) {
-  border-color: var(--textfield-error-border-color--hover);
+/* ─── Status: error ─────────────────────────────────────────── */
+
+.root--error .inputWrapper,
+.root--error .inputWrapper:hover,
+.root--error .inputWrapper:focus-within {
+  border-color: var(--textfield-border-color--error);
 }
 
-.root--error .inputWrapper:focus-within:not(:has(.input:disabled)) {
-  border-color: var(--textfield-error-border-color--focus);
+.root--error .footerLeft {
+  color: var(--textfield-label-color--error);
 }
 
-.root--error .label {
-  color: var(--textfield-error-label-color);
+.root--error .helperText {
+  color: var(--textfield-label-color--error);
 }
 
-.root--error .helper {
-  color: var(--textfield-error-helper-color);
+.root--error .counter {
+  color: var(--textfield-label-color--error);
 }
 
-/* ─── Status: success ────────────────────────────────────────── */
+/* ─── Status: success ───────────────────────────────────────── */
 
-.root--success .inputWrapper {
-  border-color: var(--textfield-success-border-color);
+.root--success .inputWrapper,
+.root--success .inputWrapper:hover,
+.root--success .inputWrapper:focus-within {
+  border-color: var(--textfield-border-color--success);
 }
 
-.root--success .inputWrapper:focus-within:not(:has(.input:disabled)) {
-  border-color: var(--textfield-success-border-color--focus);
+.root--success .footerLeft {
+  color: var(--textfield-label-color--success);
 }
 
-.root--success .helper {
-  color: var(--textfield-success-helper-color);
+.root--success .helperText {
+  color: var(--textfield-label-color--success);
 }
 
-/* ─── Focus-within label color ───────────────────────────────── */
+/* ─── Disabled ──────────────────────────────────────────────── */
 
-.root:not(.root--error) .inputWrapper:focus-within ~ .label,
-.root:not(.root--error):focus-within .label {
-  color: var(--textfield-label-color--focus);
+.root--disabled .inputWrapper,
+.root--disabled .inputWrapper:hover {
+  background: var(--textfield-background--disabled);
+  border-color: var(--textfield-border-color--disabled);
+  cursor: not-allowed;
 }
 
-.root:has(.input:disabled) .label {
+.root--disabled .label {
   color: var(--textfield-label-color--disabled);
+}
+
+.root--disabled .input {
+  color: var(--textfield-color--disabled);
+  cursor: not-allowed;
 }

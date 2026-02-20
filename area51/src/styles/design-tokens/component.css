@@ -7,6 +7,7 @@
 :root {
   /* Logo */
   --logo-symbol-size: 32px;
+  --logo-height: 24px;
 
   /* Card */
   --card-background: var(--sem-background--neutral);
@@ -93,12 +94,13 @@
   --textfield-border-width: var(--sem-border-width--sm);
   --textfield-font-family: var(--core-font-family--body);
   --textfield-icon-size: var(--sem-icon-size--sm);
+  --textfield-icon-size--label: var(--sem-icon-size--xs);
 
   /* TextField - size: small */
   --textfield-small-height: var(--core-size--0700);
   --textfield-small-font-size: var(--core-font-size--small);
   --textfield-small-line-height: var(--core-line-height--small);
-  --textfield-small-font-weight: var(--core-font-weight--regular);
+  --textfield-small-font-weight: var(--core-font-weight--medium);
   --textfield-small-padding-x: var(--core-space--0300);
   --textfield-small-padding-y: var(--core-space--0200);
   --textfield-small-gap: var(--core-space--0100);
@@ -107,30 +109,38 @@
   --textfield-medium-height: var(--core-size--0800);
   --textfield-medium-font-size: var(--core-font-size--body);
   --textfield-medium-line-height: var(--core-line-height--body);
-  --textfield-medium-font-weight: var(--core-font-weight--regular);
+  --textfield-medium-font-weight: var(--core-font-weight--medium);
   --textfield-medium-padding-x: var(--core-space--0400);
-  --textfield-medium-padding-y: var(--core-space--0200);
+  --textfield-medium-padding-y: var(--core-space--0300);
   --textfield-medium-gap: var(--core-space--0200);
 
   /* TextField - input: default */
-  --textfield-background: var(--core-color-neutral--0000);
-  --textfield-background--hover: var(--core-color-neutral--0050);
-  --textfield-background--focus: var(--core-color-neutral--0000);
-  --textfield-background--disabled: var(--core-color-neutral--0100);
-  --textfield-border-color: var(--core-color-neutral--0400);
-  --textfield-border-color--hover: var(--core-color-neutral--0700);
-  --textfield-border-color--focus: var(--core-color-primary--0700);
-  --textfield-border-color--disabled: var(--core-color-neutral--0300);
+  --textfield-background: var(--sem-background--neutral);
+  --textfield-background--hover: var(--sem-background--light);
+  --textfield-background--focus: var(--sem-background--neutral);
+  --textfield-background--disabled: var(--sem-background--subtle);
+  --textfield-border-color: var(--sem-border-color--light);
+  --textfield-border-color--hover: var(--sem-border-color--subtle);
+  --textfield-border-color--focus: var(--sem-border-color--inverted);
+  --textfield-border-color--disabled: var(--sem-border-color--light);
+  --textfield-border-color--error: var(--sem-border-color--error);
+  --textfield-border-color--success: var(--sem-border-color--success);
   --textfield-color: var(--sem-text--neutral);
   --textfield-color--disabled: var(--sem-text--light);
+  --textfield-color--placeholder: var(--sem-text--light);
+  --textfield-color--error: var(--sem-status-error--text);
+  --textfield-color--success: var(--sem-status-success--text);
   --textfield-placeholder-color: var(--sem-text--light);
 
   /* TextField - label */
   --textfield-label-color: var(--sem-text--muted);
-  --textfield-label-color--focus: var(--core-color-primary--0800);
+  --textfield-label-color--focus: var(--sem-text--neutral);
+  --textfield-label-color--error: var(--sem-status-error--text);
+  --textfield-label-color--success: var(--sem-status-success--text);
   --textfield-label-color--disabled: var(--sem-text--light);
   --textfield-label-font-size: var(--core-font-size--small);
   --textfield-label-font-weight: var(--core-font-weight--medium);
+  --textfield-label-font-weight--counter: var(--core-font-weight--regular);
   --textfield-label-line-height: var(--core-line-height--small);
   --textfield-label-gap: var(--core-space--0100);
 
