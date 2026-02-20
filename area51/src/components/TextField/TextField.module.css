@@ -45,6 +45,7 @@
 .inputWrapper:focus-within {
   background: var(--textfield-background--focus);
   border-color: var(--textfield-border-color--focus);
+  box-shadow: 0 0 0 1px var(--textfield-border-color--focus);
 }
 
 /* ─── Input / Textarea ──────────────────────────────────────── */
@@ -170,6 +171,7 @@
 .root--error .inputWrapper:hover,
 .root--error .inputWrapper:focus-within {
   border-color: var(--textfield-border-color--error);
+  box-shadow: 0 0 0 1px var(--textfield-border-color--error);
 }
 
 .root--error .footerLeft {
@@ -190,6 +192,7 @@
 .root--success .inputWrapper:hover,
 .root--success .inputWrapper:focus-within {
   border-color: var(--textfield-border-color--success);
+  box-shadow: 0 0 0 1px var(--textfield-border-color--success);
 }
 
 .root--success .footerLeft {
@@ -206,6 +209,7 @@
 .root--disabled .inputWrapper:hover {
   background: var(--textfield-background--disabled);
   border-color: var(--textfield-border-color--disabled);
+  box-shadow: none;
   cursor: not-allowed;
 }
 

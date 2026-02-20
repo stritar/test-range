@@ -92,6 +92,7 @@
   /* TextField - shared */
   --textfield-border-radius: var(--core-border-radius--sm);
   --textfield-border-width: var(--sem-border-width--sm);
+  --textfield-border-width--focus: var(--sem-border-width--md);
   --textfield-font-family: var(--core-font-family--body);
   --textfield-icon-size: var(--sem-icon-size--sm);
   --textfield-icon-size--label: var(--sem-icon-size--xs);
@@ -121,7 +122,7 @@
   --textfield-background--disabled: var(--sem-background--subtle);
   --textfield-border-color: var(--sem-border-color--light);
   --textfield-border-color--hover: var(--sem-border-color--subtle);
-  --textfield-border-color--focus: var(--sem-border-color--inverted);
+  --textfield-border-color--focus: var(--sem-border-color--muted);
   --textfield-border-color--disabled: var(--sem-border-color--light);
   --textfield-border-color--error: var(--sem-border-color--error);
   --textfield-border-color--success: var(--sem-border-color--success);
