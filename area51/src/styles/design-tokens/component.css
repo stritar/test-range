@@ -174,9 +174,13 @@
 
   /* ImageCard */
   --image-card-border-radius: var(--core-border-radius--md);
+  --image-card-border-color: var(--sem-background--neutral);
+  --image-card-border-width: var(--sem-border-width--sm);
   --image-card-opacity: 1;
   --image-card-opacity--disabled: 0.5;
   --image-card-max-width: 150px;
+  --image-card-border-width--selected: var(--sem-border-width--md);
+  --image-card-border-color--selected: var(--button-secondary-color);
 
   /* Button - variant: destructive */
   --button-destructive-background: transparent;
@@ -191,4 +195,25 @@
   --button-destructive-border-color--hover: var(--sem-status-error--text);
   --button-destructive-border-color--pressed: var(--sem-status-error--text);
   --button-destructive-border-color--disabled: var(--sem-text--light);
+
+  /* Tooltip */
+  --tooltip-background: var(--core-color-neutral--1200);
+  --tooltip-color: var(--sem-text--inverted);
+  --tooltip-color--secondary: var(--core-color-neutral--0500);
+  --tooltip-border-radius: var(--core-border-radius--sm);
+  --tooltip-padding-x: var(--core-space--0200);
+  --tooltip-padding-y: var(--core-space--0100);
+  --tooltip-gap: var(--core-space--0100);
+
+  /* ContextualToolbar - icon-button */
+  --contextual-toolbar-icon-button-border-radius: var(--core-border-radius--sm);
+  --contextual-toolbar-icon-button-background: var(--sem-background--neutral);
+  --contextual-toolbar-icon-button-background--hover: var(--sem-background--subtle);
+  --contextual-toolbar-icon-button-background--pressed: var(--sem-background--muted);
+  --contextual-toolbar-icon-button-background--selected: var(--button-secondary-background);
+  --contextual-toolbar-icon-button-background--selected-hover: var(--button-secondary-background--hover);
+  --contextual-toolbar-icon-button-color: var(--sem-text--neutral);
+  --contextual-toolbar-icon-button-color--selected: var(--button-secondary-color);
+  --contextual-toolbar-icon-button-padding: var(--core-space--0200);
+  --contextual-toolbar-icon-button-icon-size: var(--sem-icon-size--xs);
 }

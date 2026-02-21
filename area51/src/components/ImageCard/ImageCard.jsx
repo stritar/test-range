@@ -9,13 +9,13 @@ import styles from './ImageCard.module.css';
  * @param {boolean} [disabled=false] - Reduces opacity to --image-card-opacity--disabled
  * @param {string} [className] - Additional class names
  */
-export function ImageCard({ src, alt = '', disabled = false, className = '', ...rest }) {
-  const rootClass = [styles.root, disabled && styles.disabled, className]
+export function ImageCard({ src, alt = '', disabled = false, selected = false, className = '', ...rest }) {
+  const rootClass = [styles.root, disabled && styles.disabled, selected && styles.selected, className]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={rootClass} aria-disabled={disabled || undefined} {...rest}>
+    <div className={rootClass} aria-disabled={disabled || undefined} aria-selected={selected || undefined} {...rest}>
       {src ? (
         <img className={styles.image} src={src} alt={alt} />
       ) : (

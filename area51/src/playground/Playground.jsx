@@ -3,6 +3,8 @@ import { CardSection } from './sections/CardSection';
 import { ImageCardSection } from './sections/ImageCardSection';
 import { LogoSection } from './sections/LogoSection';
 import { TextFieldSection } from './sections/TextFieldSection';
+import { ToolbarIconButtonSection } from './sections/ToolbarIconButtonSection';
+import { TooltipSection } from './sections/TooltipSection';
 import styles from './Playground.module.css';
 
 const sections = [
@@ -11,6 +13,8 @@ const sections = [
   { id: 'image-card', label: 'ImageCard' },
   { id: 'logo', label: 'Logo' },
   { id: 'textfield', label: 'TextField' },
+  { id: 'toolbar-icon-button', label: 'ToolbarIconButton' },
+  { id: 'tooltip', label: 'Tooltip' },
 ];
 
 export function Playground() {
@@ -53,6 +57,16 @@ export function Playground() {
         <section id="textfield" className={styles.section}>
           <h2 className={styles.sectionTitle}>TextField</h2>
           <TextFieldSection />
+        </section>
+
+        <section id="toolbar-icon-button" className={styles.section}>
+          <h2 className={styles.sectionTitle}>ToolbarIconButton</h2>
+          <ToolbarIconButtonSection />
+        </section>
+
+        <section id="tooltip" className={styles.section}>
+          <h2 className={styles.sectionTitle}>Tooltip</h2>
+          <TooltipSection />
         </section>
       </main>
     </div>

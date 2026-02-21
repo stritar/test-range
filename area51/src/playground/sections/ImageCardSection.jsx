@@ -13,6 +13,13 @@ export function ImageCardSection() {
       </div>
 
       <div className={styles.group}>
+        <p className={styles.groupLabel}>Selected</p>
+        <div className={styles.row}>
+          <ImageCard src={placeholderSrc} alt="Placeholder" selected />
+        </div>
+      </div>
+
+      <div className={styles.group}>
         <p className={styles.groupLabel}>Disabled</p>
         <div className={styles.row}>
           <ImageCard src={placeholderSrc} alt="Placeholder" disabled />

@@ -1,0 +1,34 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--contextual-toolbar-icon-button-padding);
+  border-radius: var(--contextual-toolbar-icon-button-border-radius);
+  background: var(--contextual-toolbar-icon-button-background);
+  color: var(--contextual-toolbar-icon-button-color);
+  border: none;
+  cursor: pointer;
+  transition: var(--sem-motion-transition--hover);
+  flex-shrink: 0;
+}
+
+.root:hover {
+  background: var(--contextual-toolbar-icon-button-background--hover);
+}
+
+.root:active {
+  background: var(--contextual-toolbar-icon-button-background--pressed);
+}
+
+.root--selected {
+  background: var(--contextual-toolbar-icon-button-background--selected);
+  color: var(--contextual-toolbar-icon-button-color--selected);
+}
+
+.root--selected:hover {
+  background: var(--contextual-toolbar-icon-button-background--selected-hover);
+}
+
+.root--selected:active {
+  background: var(--contextual-toolbar-icon-button-background--pressed);
+}

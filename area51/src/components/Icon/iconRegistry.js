@@ -7,6 +7,8 @@ import placeholderSvg from '../../assets/icons/placeholder.svg?raw';
 import imageSvg from '../../assets/icons/image.svg?raw';
 import errorSvg from '../../assets/icons/error.svg?raw';
 import successSvg from '../../assets/icons/success.svg?raw';
+import boldSvg from '../../assets/icons/bold.svg?raw';
+import downloadImageSvg from '../../assets/icons/download-image.svg?raw';
 
 const icons = {
   text: textSvg,
@@ -14,6 +16,8 @@ const icons = {
   image: imageSvg,
   error: errorSvg,
   success: successSvg,
+  bold: boldSvg,
+  'download-image': downloadImageSvg,
 };
 
 const sizeAttrs = /(width|height)="[^"]+"/g;
