@@ -11,6 +11,7 @@
 
   /* Card */
   --card-background: var(--sem-background--neutral);
+  --card-background--neutral: var(--sem-background--light);
   --card-background--inverted: var(--sem-background--inverted);
   --card-background--muted: var(--sem-background--muted);
   --card-background--subtle: var(--sem-background--subtle);
@@ -170,6 +171,12 @@
   --textfield-success-border-color: var(--sem-status-success--text);
   --textfield-success-border-color--focus: var(--sem-status-success--text);
   --textfield-success-helper-color: var(--sem-status-success--text);
+
+  /* ImageCard */
+  --image-card-border-radius: var(--core-border-radius--md);
+  --image-card-opacity: 1;
+  --image-card-opacity--disabled: 0.5;
+  --image-card-max-width: 150px;
 
   /* Button - variant: destructive */
   --button-destructive-background: transparent;

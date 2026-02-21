@@ -1,0 +1,36 @@
+.root {
+  display: inline-block;
+  border-radius: var(--image-card-border-radius);
+  overflow: hidden;
+  opacity: var(--image-card-opacity);
+  box-shadow: var(--sem-shadow-elevation-1);
+  transition: var(--sem-motion-transition--hover);
+  cursor: pointer;
+}
+
+.root:hover {
+  box-shadow: var(--sem-shadow-elevation-2);
+}
+
+.root:active {
+  box-shadow: var(--sem-shadow-elevation-1);
+}
+
+.disabled {
+  opacity: var(--image-card-opacity--disabled);
+  pointer-events: none;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: var(--image-card-max-width);
+}
+
+.placeholder {
+  display: block;
+  width: var(--image-card-max-width);
+  aspect-ratio: 16 / 9;
+  background-color: var(--sem-background--muted);
+}

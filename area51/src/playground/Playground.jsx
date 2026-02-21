@@ -1,5 +1,6 @@
 import { ButtonSection } from './sections/ButtonSection';
 import { CardSection } from './sections/CardSection';
+import { ImageCardSection } from './sections/ImageCardSection';
 import { LogoSection } from './sections/LogoSection';
 import { TextFieldSection } from './sections/TextFieldSection';
 import styles from './Playground.module.css';
@@ -7,6 +8,7 @@ import styles from './Playground.module.css';
 const sections = [
   { id: 'button', label: 'Button' },
   { id: 'card', label: 'Card' },
+  { id: 'image-card', label: 'ImageCard' },
   { id: 'logo', label: 'Logo' },
   { id: 'textfield', label: 'TextField' },
 ];
@@ -36,6 +38,11 @@ export function Playground() {
         <section id="card" className={styles.section}>
           <h2 className={styles.sectionTitle}>Card</h2>
           <CardSection />
+        </section>
+
+        <section id="image-card" className={styles.section}>
+          <h2 className={styles.sectionTitle}>ImageCard</h2>
+          <ImageCardSection />
         </section>
 
         <section id="logo" className={styles.section}>

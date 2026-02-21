@@ -72,6 +72,11 @@
   --sem-layout-gutter: var(--breakpoints-layout-gutter);
   --sem-layout-margin: var(--breakpoints-layout-margin);
 
+  /* Shadow */
+  --sem-shadow-color: rgb(10 12 27 / 8%);
+  --sem-shadow-elevation-1: 0px 1px 10px 0px var(--sem-shadow-color);
+  --sem-shadow-elevation-2: 0px 1px 40px 0px var(--sem-shadow-color);
+
   /* Status */
   --sem-status-error--background: rgb(255 219 220);
   --sem-status-error--background--subtle: rgb(255 233 234);
