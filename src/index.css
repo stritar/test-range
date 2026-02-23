@@ -21,6 +21,31 @@
   --sand-font-mono: "SF Mono", "Fira Code", monospace;
 }
 
+:root[data-theme="light"] {
+  --color-text: #2f2f2f;
+  --color-bg-base: #edeceb;
+  --color-btn-bg: rgba(47, 47, 47, 0.85);
+  --color-btn-text: #f7f5f4;
+  --color-btn-bg-hover: rgba(47, 47, 47, 1);
+  --bg-light-op: 1;
+  --bg-dark-op: 0;
+}
+
+:root[data-theme="dark"] {
+  --color-text: #f7f5f4;
+  --color-bg-base: #292623;
+  --color-btn-bg: rgba(247, 245, 244, 0.85);
+  --color-btn-text: #2f2f2f;
+  --color-btn-bg-hover: rgba(247, 245, 244, 1);
+  --bg-light-op: 0;
+  --bg-dark-op: 1;
+}
+
+html {
+  background-color: var(--color-bg-base);
+  min-height: 100dvh;
+}
+
 html,
 body,
 #root {
@@ -30,11 +55,37 @@ body,
 }
 
 body {
+  isolation: isolate;
   font-family: var(--sand-font);
-  background: var(--sand-bg);
-  color: var(--sand-text);
+  background: none;
+  color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  z-index: 0;
+  transition: color 0.3s;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  will-change: opacity;
+  transition: opacity 0.8s ease;
+  z-index: -1;
+}
+
+body::before {
+  background: radial-gradient(50% 50% at 50% 50%, #ffffff 0%, #d6d5db 100%);
+  opacity: var(--bg-light-op);
+}
+
+body::after {
+  background: linear-gradient(180deg, #222324 0%, #292623 50%, #3d3a37 100%);
+  opacity: var(--bg-dark-op);
 }
 
 input,

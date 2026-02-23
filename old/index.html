@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Denis Stritar - Product Designer</title>
+
+    <!-- Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Theme colors -->
+    <meta name="theme-color" content="#EDECEB" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#292623" media="(prefers-color-scheme: dark)">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Import map so GLTFLoader can resolve "three" -->
+    <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.161.0/build/three.module.js" } }
+  </script>
+</head>
+
+<body>
+    <!-- WebGL background (below UI) -->
+    <div id="webgl-bg" aria-hidden="true"></div>
+
+    <!-- UI visibility toggle (outside .container) -->
+    <button id="ui-visibility" class="chrome-toggle" aria-label="Hide interface" aria-pressed="false"
+        data-state="shown">
+        <span class="chrome-toggle__icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Toggle interface visibility</span>
+    </button>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="header">
+            <a href="/" id="logo" aria-label="Home"></a>
+            <label class="switch" aria-label="Toggle dark mode">
+                <input type="checkbox" id="theme-toggle" />
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="content intro">
+            <h1>Denis Stritar</h1>
+            <p>I’m a Berlin-based Product Designer at <a href="#">Embeddable</a>, where I design intuitive,
+                customer-facing analytics experiences that work seamlessly out of the box.</p>
+            <div class="button-group">
+                <button class="btn" id="cv-btn">
+                    <span class="btn__icon doc"></span>
+                    <span class="btn__label">Download my CV (.pdf)</span>
+                </button>
+                <button class="btn" id="contact-btn">
+                    <span class="btn__icon linkedin"></span>
+                    <span class="btn__label">Get in touch</span>
+                </button>
+            </div>
+        </div>
+
+        <section class="content cards">
+            <div class="cards-grid">
+                <a class="card" href="#">
+                    <div class="card__media" aria-hidden="true"></div>
+                    <h3 class="card__title">Project name</h3>
+                    <p class="card__subtitle">Project description goes here as dummy text.</p>
+                </a>
+                <a class="card" href="#">
+                    <div class="card__media" aria-hidden="true"></div>
+                    <h3 class="card__title">Project name</h3>
+                    <p class="card__subtitle">Project description goes here as dummy text.</p>
+                </a>
+                <a class="card" href="#">
+                    <div class="card__media" aria-hidden="true"></div>
+                    <h3 class="card__title">Project name</h3>
+                    <p class="card__subtitle">Project description goes here as dummy text.</p>
+                </a>
+                <a class="card" href="#">
+                    <div class="card__media" aria-hidden="true"></div>
+                    <h3 class="card__title">Project name</h3>
+                    <p class="card__subtitle">Project description goes here as dummy text.</p>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© <span id="year"></span> Denis Stritar</p>
+    </footer>
+
+    <!-- Always-on UI script -->
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const toggleInput = document.getElementById("theme-toggle");
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            function initTheme() {
+                const saved = localStorage.getItem("theme");
+                if (saved) {
+                    root.setAttribute("data-theme", saved);
+                    if (toggleInput) toggleInput.checked = (saved === "dark");
+                } else {
+                    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    const theme = systemDark ? "dark" : "light";
+                    root.setAttribute("data-theme", theme);
+                    if (toggleInput) toggleInput.checked = systemDark;
+                }
+            }
+            if (toggleInput) {
+                toggleInput.addEventListener("change", () => {
+                    const newTheme = toggleInput.checked ? "dark" : "light";
+                    root.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                });
+            }
+            initTheme();
+
+            const cvBtn = document.getElementById("cv-btn");
+            const contactBtn = document.getElementById("contact-btn");
+            if (cvBtn) cvBtn.addEventListener("click", () => window.open("assets/Denis-Stritar-CV.pdf", "_blank"));
+            if (contactBtn) contactBtn.addEventListener("click", () => window.open("https://www.linkedin.com/", "_blank"));
+
+            /* ===== UI visibility toggle ===== */
+            const containerEl = document.querySelector(".container");
+            const uiToggleBtn = document.getElementById("ui-visibility");
+            function applyUiState(state) {
+                if (!containerEl || !uiToggleBtn) return;
+                if (state === "hidden") {
+                    containerEl.setAttribute("aria-hidden", "true");
+                    uiToggleBtn.setAttribute("data-state", "hidden");
+                    uiToggleBtn.setAttribute("aria-label", "Show interface");
+                    uiToggleBtn.setAttribute("aria-pressed", "true");
+                } else {
+                    containerEl.removeAttribute("aria-hidden");
+                    uiToggleBtn.setAttribute("data-state", "shown");
+                    uiToggleBtn.setAttribute("aria-label", "Hide interface");
+                    uiToggleBtn.setAttribute("aria-pressed", "false");
+                }
+            }
+            const savedUi = localStorage.getItem("ui-visibility") || "shown";
+            applyUiState(savedUi);
+            if (uiToggleBtn) {
+                uiToggleBtn.addEventListener("click", () => {
+                    const current = uiToggleBtn.getAttribute("data-state") === "hidden" ? "hidden" : "shown";
+                    const next = current === "hidden" ? "shown" : "hidden";
+                    applyUiState(next);
+                    localStorage.setItem("ui-visibility", next);
+                });
+            }
+        })();
+    </script>
+
+    <!-- WebGL module -->
+    <script type="module">
+        import * as THREE from "three";
+        import { GLTFLoader } from "https://unpkg.com/three@0.161.0/examples/jsm/loaders/GLTFLoader.js";
+        import { RGBELoader } from "https://unpkg.com/three@0.161.0/examples/jsm/loaders/RGBELoader.js";
+
+        const container = document.getElementById("webgl-bg");
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+        renderer.shadowMap.enabled = false;
+        renderer.useLegacyLights = false;
+        container.appendChild(renderer.domElement);
+
+        // Scene & camera
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
+
+        // PMREM
+        const pmrem = new THREE.PMREMGenerator(renderer);
+
+        // HDR envs
+        const HDR_LIGHT_URL = new URL("assets/hdr/light.hdr", import.meta.url).href;
+        const HDR_DARK_URL = new URL("assets/hdr/dark.hdr", import.meta.url).href;
+        let envLight = null, envDark = null;
+        const rgbe = new RGBELoader();
+        function loadEnv(url) {
+            return new Promise((resolve, reject) => {
+                rgbe.load(url, (tex) => {
+                    const env = pmrem.fromEquirectangular(tex).texture;
+                    tex.dispose();
+                    resolve(env);
+                }, undefined, reject);
+            });
+        }
+
+        // Models
+        const loader = new GLTFLoader();
+        const URL_LIGHT = new URL("assets/model-light.glb", import.meta.url).href;
+        const URL_DARK = new URL("assets/model-dark.glb", import.meta.url).href;
+        let modelLight = null;
+        let modelDark = null;
+        let bothLoaded = false;
+
+        function loadModel(url) {
+            return new Promise((resolve, reject) => {
+                loader.load(url, (gltf) => {
+                    const m = gltf.scene;
+                    m.traverse((o) => {
+                        if (o.isMesh) {
+                            o.frustumCulled = false;
+                            o.castShadow = false;
+                            o.receiveShadow = false;
+                            if (o.material && o.material.isMeshStandardMaterial) o.material.needsUpdate = true;
+                        }
+                    });
+                    resolve(m);
+                }, undefined, reject);
+            });
+        }
+
+        function fitCameraToBoth(cam, a, b, padding = 1.3) {
+            const box = new THREE.Box3();
+            if (a) box.expandByObject(a);
+            if (b) box.expandByObject(b);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
+            if (a) a.position.sub(center);
+            if (b) b.position.sub(center);
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = cam.fov * Math.PI / 180;
+            let dist = (maxDim / 2) / Math.tan(fov / 2);
+            dist *= padding;
+            cam.position.set(0, size.y * 0.15, dist);
+            cam.lookAt(0, 0, 0);
+            cam.near = Math.max(0.01, dist / 100);
+            cam.far = dist * 100;
+            cam.updateProjectionMatrix();
+        }
+
+        // Resize
+        const PADDING = 1.2;
+        function resize() {
+            const rect = container.getBoundingClientRect();
+            const w = Math.max(1, Math.floor(rect.width));
+            const h = Math.max(1, Math.floor(rect.height));
+            renderer.setSize(w, h, true);
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            if (bothLoaded) fitCameraToBoth(camera, modelLight, modelDark, PADDING);
+        }
+        const ro = new ResizeObserver(resize);
+        ro.observe(container);
+        window.addEventListener("resize", resize, { passive: true });
+        window.addEventListener("orientationchange", resize, { passive: true });
+
+        // Theme
+        const root = document.documentElement;
+        const getTheme = () => root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        function applyThemeVisibilityAndLighting() {
+            const theme = getTheme();
+            if (modelLight) modelLight.visible = (theme === "light");
+            if (modelDark) modelDark.visible = (theme === "dark");
+            if (theme === "light" && envLight) scene.environment = envLight;
+            if (theme === "dark" && envDark) scene.environment = envDark;
+        }
+        new MutationObserver((muts) => {
+            if (muts.some(m => m.attributeName === "data-theme")) applyThemeVisibilityAndLighting();
+        }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+        // Load assets
+        Promise.all([
+            loadEnv(HDR_LIGHT_URL),
+            loadEnv(HDR_DARK_URL),
+            loadModel(URL_LIGHT),
+            loadModel(URL_DARK),
+        ]).then(([envL, envD, mLight, mDark]) => {
+            envLight = envL;
+            envDark = envD;
+            modelLight = mLight; scene.add(modelLight);
+            modelDark = mDark; scene.add(modelDark);
+            bothLoaded = true;
+            applyThemeVisibilityAndLighting();
+            resize();
+        }).catch(err => console.error("Asset load failed:", err));
+
+        // ===== INTERACTION MODES =====
+        // Desktop/tablet: pointer-driven. Phones: automatic random drift.
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const likelyPhone = (() => {
+            const touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            const narrow = Math.min(window.innerWidth, window.innerHeight) < 768; // portrait phones
+            return touch && narrow;
+        })();
+
+        // Shared state
+        const MAX_YAW = 0.8;
+        const MAX_PITCH = 0.45;
+        const MAX_SHIFT_X = 0.25;
+        const MAX_SHIFT_Y = 0.15;
+        const EASE = 0.02;
+
+        let targetYaw = 0, currYaw = 0;
+        let targetPitch = 0, currPitch = 0;
+        let targetShiftX = 0, currShiftX = 0;
+        let targetShiftY = 0, currShiftY = 0;
+
+        // ---- Desktop/tablet: pointer controls ----
+        function updateFromPointer(clientX, clientY) {
+            const nx = (clientX / Math.max(1, window.innerWidth) - 0.5) * 2;
+            const ny = (clientY / Math.max(1, window.innerHeight) - 0.5) * 2;
+            targetYaw = nx * MAX_YAW;
+            targetPitch = ny * MAX_PITCH;
+            targetShiftX = -nx * MAX_SHIFT_X;
+            targetShiftY = ny * MAX_SHIFT_Y;
+        }
+
+        if (!likelyPhone) {
+            window.addEventListener('pointermove', (e) => updateFromPointer(e.clientX, e.clientY), { passive: true });
+            window.addEventListener('mouseleave', () => { targetYaw = targetPitch = 0; targetShiftX = targetShiftY = 0; }, { passive: true });
+        }
+
+        // ---- Phones: automatic random drift ----
+        let driftTimer = null;
+        function randomizeTargets() {
+            targetYaw = (Math.random() * 2 - 1) * MAX_YAW;
+            targetPitch = (Math.random() * 2 - 1) * MAX_PITCH;
+            targetShiftX = (Math.random() * 2 - 1) * MAX_SHIFT_X;
+            targetShiftY = (Math.random() * 2 - 1) * MAX_SHIFT_Y;
+        }
+        function startDrift() {
+            if (prefersReduced) return;
+            randomizeTargets();
+            driftTimer = setInterval(() => {
+                // vary interval a bit to feel organic
+                randomizeTargets();
+            }, 3500 + Math.random() * 2000);
+        }
+        function stopDrift() {
+            if (driftTimer) { clearInterval(driftTimer); driftTimer = null; }
+            targetYaw = targetPitch = 0;
+            targetShiftX = targetShiftY = 0;
+        }
+        if (likelyPhone) startDrift();
+
+        // Pause when tab hidden (saves battery)
+        let running = true;
+        document.addEventListener('visibilitychange', () => {
+            running = !document.hidden;
+            if (!running) stopDrift();
+            else if (likelyPhone) startDrift(), animate();
+        });
+
+        // Apply transforms
+        function applyTransforms(obj) {
+            obj.rotation.set(currPitch, currYaw, 0);
+            obj.position.x = currShiftX;
+            obj.position.y = currShiftY;
+        }
+
+        // Animate
+        function animate() {
+            if (!running) return;
+            requestAnimationFrame(animate);
+
+            currYaw += (targetYaw - currYaw) * EASE;
+            currPitch += (targetPitch - currPitch) * EASE;
+            currShiftX += (targetShiftX - currShiftX) * EASE;
+            currShiftY += (targetShiftY - currShiftY) * EASE;
+
+            if (modelLight) applyTransforms(modelLight);
+            if (modelDark) applyTransforms(modelDark);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+.toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    filter 0.2s;
+}
+
+.toggle:hover {
+  filter: brightness(1.08);
+}
+
+.toggle:active {
+  transform: scale(0.97);
+}
+
+:root[data-theme="light"] .toggle {
+  background: rgba(47, 47, 47, 0.85);
+  color: #f7f5f4;
+}
+
+:root[data-theme="dark"] .toggle {
+  background: rgba(247, 245, 244, 0.85);
+  color: #2f2f2f;
+}
+
+.icon {
+  font-size: 16px;
+  line-height: 1;
+}

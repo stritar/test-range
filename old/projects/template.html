@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Project Article — Denis Stritar</title>
+
+    <!-- Inter + Roboto Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Theme colors -->
+    <meta name="theme-color" content="#EDECEB" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#292623" media="(prefers-color-scheme: dark)">
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="/" id="logo" aria-label="Home"></a>
+            <label class="switch" aria-label="Toggle dark mode">
+                <input type="checkbox" id="theme-toggle" />
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- Article -->
+        <article class="content article">
+            <header class="article__header">
+                <h1 class="article__title">Designing Out-of-the-Box Analytics</h1>
+                <p class="article__subtext">How we built extendable, zero-config visualizations at Embeddable —
+                    balancing craft, speed, and clarity.</p>
+
+                <div class="article__meta">
+                    <time datetime="2025-09-01" id="article-date">September 1, 2025</time>
+                    <span aria-hidden="true">·</span>
+                    <span id="reading-time">~– min read</span>
+                </div>
+            </header>
+
+            <section class="article__body" id="article-body">
+                <h2>Heading Level 2</h2>
+                <p>
+                    This body text demonstrates <strong>bold</strong>, <em>italic</em>, and
+                    <a href="#">inline links</a>. You can also use <mark>highlight</mark> for emphasis.
+                </p>
+
+                <h3>Heading Level 3</h3>
+                <p>
+                    We focused on a <strong>single source of truth</strong> for tokens and styles.
+                    This reduced entropy and ensured components stayed visually consistent across dark and light themes.
+                </p>
+
+                <!-- Single image -->
+                <figure class="article__figure">
+                    <img src="../assets/examples/hero-16x9.jpg" alt="Dashboard hero mockup" />
+                    <figcaption>Final dashboard hero with soft shadows and tuned contrast.</figcaption>
+                </figure>
+
+                <p>
+                    The layout uses the same grid as the homepage and inherits your theme tokens for colors and glass
+                    effects.
+                    Cards and buttons can be dropped in inline where needed.
+                </p>
+
+                <!-- Image grid (click to enlarge) -->
+                <div class="article__grid lightbox-grid" data-lightbox="project-grid">
+                    <figure>
+                        <img src="../assets/examples/thumb-1.jpg" data-full="../assets/examples/thumb-1.jpg"
+                            alt="Prototype iteration A">
+                        <figcaption>Prototype A</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/examples/thumb-2.jpg" data-full="../assets/examples/thumb-2.jpg"
+                            alt="Prototype iteration B">
+                        <figcaption>Prototype B</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/examples/thumb-3.jpg" data-full="../assets/examples/thumb-3.jpg"
+                            alt="Prototype iteration C">
+                        <figcaption>Prototype C</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/examples/thumb-4.jpg" data-full="../assets/examples/thumb-4.jpg"
+                            alt="Prototype iteration D">
+                        <figcaption>Prototype D</figcaption>
+                    </figure>
+                </div>
+
+                           <p>
+                    The layout uses the same grid as the homepage and inherits your theme tokens for colors and glass
+                    effects.
+                    Cards and buttons can be dropped in inline where needed.
+                </p>
+
+                <!-- Image grid (click to enlarge) -->
+                <div class="article__grid lightbox-grid" data-lightbox="project-grid">
+                    <figure>
+                        <img src="../assets/examples/thumb-1.jpg" data-full="../assets/examples/thumb-1.jpg"
+                            alt="Prototype iteration A">
+                        <figcaption>Prototype A</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../assets/examples/thumb-2.jpg" data-full="../assets/examples/thumb-2.jpg"
+                            alt="Prototype iteration B">
+                        <figcaption>Prototype B</figcaption>
+                    </figure>
+         
+                </div>
+
+                <!-- Code snippet -->
+                <div class="article__code">
+                    <pre><code class="language-js">
+// Tokens example: keep design & code aligned
+export const tokens = {
+  color: {
+    text: "var(--color-text)",
+    surface: "var(--color-bg-base)"
+  },
+  radius: { sm: 6, md: 12, lg: 16 },
+  shadow: { soft: "0 10px 30px rgba(0,0,0,0.12)" }
+};
+          </code></pre>
+                </div>
+            </section>
+
+            <hr class="article__divider" />
+
+            <footer class="article__footer">
+                <a class="btn" href="/">
+                    <span class="btn__icon doc" aria-hidden="true"></span>
+                    <span class="btn__label">Back home</span>
+                </a>
+            </footer>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© <span id="year"></span> Denis Stritar</p>
+    </footer>
+
+    <!-- Lightbox dialog -->
+    <dialog id="lightbox" class="lightbox">
+        <button class="lightbox__close" aria-label="Close">×</button>
+        <img id="lightbox-img" alt="">
+        <p id="lightbox-cap"></p>
+    </dialog>
+
+    <!-- Scripts -->
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const toggleInput = document.getElementById("theme-toggle");
+            const yearEl = document.getElementById("year");
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            // Theme
+            function initTheme() {
+                const saved = localStorage.getItem("theme");
+                if (saved) {
+                    root.setAttribute("data-theme", saved);
+                    if (toggleInput) toggleInput.checked = (saved === "dark");
+                } else {
+                    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                    const theme = systemDark ? "dark" : "light";
+                    root.setAttribute("data-theme", theme);
+                    if (toggleInput) toggleInput.checked = systemDark;
+                }
+            }
+            if (toggleInput) {
+                toggleInput.addEventListener("change", () => {
+                    const newTheme = toggleInput.checked ? "dark" : "light";
+                    root.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                });
+            }
+            initTheme();
+
+            // --- Reading time (~225 wpm), exclude code/pre/script/style ---
+            function getReadingTime(container, wpm = 225) {
+                if (!container) return 0;
+                const clone = container.cloneNode(true);
+                // remove elements we don't want to count
+                clone.querySelectorAll('pre, code, script, style, dialog').forEach(n => n.remove());
+                const text = clone.textContent || "";
+                const words = text.trim().split(/\s+/).filter(Boolean).length;
+                return Math.max(1, Math.round(words / wpm));
+            }
+            const bodyEl = document.getElementById('article-body');
+            const readEl = document.getElementById('reading-time');
+            if (bodyEl && readEl) {
+                const mins = getReadingTime(bodyEl, 225);
+                readEl.textContent = `~${mins} min read`;
+            }
+
+            // --- Lightbox for image grids ---
+            const dlg = document.getElementById('lightbox');
+            const dlgImg = document.getElementById('lightbox-img');
+            const dlgCap = document.getElementById('lightbox-cap');
+            const closeBtn = document.querySelector('.lightbox__close');
+
+            function openLightbox(src, alt, cap) {
+                dlgImg.src = src;
+                dlgImg.alt = alt || '';
+                dlgCap.textContent = cap || '';
+
+                // If already open (rare), just focus; else open.
+                if (!dlg.open) {
+                    if (typeof dlg.showModal === 'function') dlg.showModal();
+                    else dlg.setAttribute('open', '');
+                }
+                // Move focus to dialog for ESC to work reliably
+                dlg.focus();
+            }
+
+            function closeLightbox() {
+                // Only call .close() if open; it clears the 'open' attr for us
+                if (dlg.open && typeof dlg.close === 'function') dlg.close();
+                else dlg.removeAttribute('open');
+
+                // Clear media after close to free memory
+                dlgImg.src = '';
+                dlgImg.alt = '';
+                dlgCap.textContent = '';
+            }
+
+            // Close button
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            // Click backdrop to close (only when the target *is* the <dialog>)
+            dlg.addEventListener('click', (e) => {
+                if (e.target === dlg) closeLightbox();
+            });
+
+            // Prevent clicks on the image/caption from bubbling to the dialog
+            dlgImg.addEventListener('click', (e) => e.stopPropagation());
+            dlgCap.addEventListener('click', (e) => e.stopPropagation());
+
+            // ESC to close
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && dlg.open) closeLightbox();
+            });
+
+            // Hook up thumbnails
+            document.querySelectorAll('.lightbox-grid img').forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', (e) => {
+                    // Prevent the thumbnail click from immediately closing the dialog
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const full = img.getAttribute('data-full') || img.src;
+                    const fig = img.closest('figure');
+                    const cap = fig ? (fig.querySelector('figcaption')?.textContent || '') : '';
+                    openLightbox(full, img.alt, cap);
+                });
+            });
+
+            // Optional: after closing, return focus to last clicked thumbnail
+            let lastThumb = null;
+            document.querySelectorAll('.lightbox-grid img').forEach(img => {
+                img.addEventListener('click', () => { lastThumb = img; }, { capture: true });
+            });
+            dlg.addEventListener('close', () => { if (lastThumb) lastThumb.focus({ preventScroll: true }); });
+        })();
+    </script>
+</body>
+
+</html>
