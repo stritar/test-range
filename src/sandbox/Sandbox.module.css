@@ -1,0 +1,45 @@
+.layout {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--sand-border);
+  background: var(--sand-surface);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px 8px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sand-text-muted);
+}
+
+.count {
+  font-size: 11px;
+  font-family: var(--sand-font-mono);
+  color: var(--sand-text-muted);
+  background: var(--sand-bg);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
