@@ -11,7 +11,6 @@ function App() {
         <WebGLBackground />
         <ThemeToggle />
         <Routes>
-          <Route path="/" element={<Sandbox />} />
           <Route path="/sandbox" element={<Sandbox />} />
         </Routes>
       </ThemeProvider>
