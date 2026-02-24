@@ -346,11 +346,12 @@ export function WebGLBackground() {
     }
 
     // --- Load assets ---
+    const base = import.meta.env.BASE_URL;
     Promise.all([
-      loadEnv("/assets/hdr/light.hdr"),
-      loadEnv("/assets/hdr/dark.hdr"),
-      loadModel("/assets/model-light.glb"),
-      loadModel("/assets/model-dark.glb"),
+      loadEnv(`${base}assets/hdr/light.hdr`),
+      loadEnv(`${base}assets/hdr/dark.hdr`),
+      loadModel(`${base}assets/model-light.glb`),
+      loadModel(`${base}assets/model-dark.glb`),
     ])
       .then(([envL, envD, mLight, mDark]) => {
         envLight = envL;

@@ -6,11 +6,12 @@ import { Sandbox } from "./sandbox/Sandbox";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ThemeProvider>
         <WebGLBackground />
         <ThemeToggle />
         <Routes>
+          <Route path="/" element={<Sandbox />} />
           <Route path="/sandbox" element={<Sandbox />} />
         </Routes>
       </ThemeProvider>
