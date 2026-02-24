@@ -15,5 +15,6 @@ function svgCurrentColor(): Plugin {
 }
 
 export default defineConfig({
+  base: "/test-range/",
   plugins: [react(), svgCurrentColor()],
 });
