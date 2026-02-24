@@ -1,15 +1,96 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { useTheme } from "../../theme/ThemeContext";
 import styles from "./WebGLBackground.module.css";
+
+const DITHER_OPACITY = 0.2;
+
+const BAYER_8X8 = [
+   0, 32,  8, 40,  2, 34, 10, 42,
+  48, 16, 56, 24, 50, 18, 58, 26,
+  12, 44,  4, 36, 14, 46,  6, 38,
+  60, 28, 52, 20, 62, 30, 54, 22,
+   3, 35, 11, 43,  1, 33,  9, 41,
+  51, 19, 59, 27, 49, 17, 57, 25,
+  15, 47,  7, 39, 13, 45,  5, 37,
+  63, 31, 55, 23, 61, 29, 53, 21,
+];
+
+function createBayerDataURL(): string {
+  const canvas = document.createElement("canvas");
+  canvas.width = 8;
+  canvas.height = 8;
+  const ctx = canvas.getContext("2d")!;
+  const img = ctx.createImageData(8, 8);
+  for (let i = 0; i < 64; i++) {
+    const v = Math.round((BAYER_8X8[i] / 63) * 255);
+    const off = i * 4;
+    img.data[off] = v;
+    img.data[off + 1] = v;
+    img.data[off + 2] = v;
+    img.data[off + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  return canvas.toDataURL();
+}
+
+function createBayerTexture(): THREE.DataTexture {
+  const data = new Uint8Array(BAYER_8X8.map((v) => Math.round((v / 63) * 255)));
+  const tex = new THREE.DataTexture(data, 8, 8, THREE.RedFormat);
+  tex.minFilter = THREE.NearestFilter;
+  tex.magFilter = THREE.NearestFilter;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  tex.needsUpdate = true;
+  return tex;
+}
+
+const DitherShader = {
+  uniforms: {
+    tDiffuse: { value: null as THREE.Texture | null },
+    tBayer: { value: null as THREE.DataTexture | null },
+    uOpacity: { value: DITHER_OPACITY },
+    uResolution: { value: new THREE.Vector2(1, 1) },
+  },
+  vertexShader: /* glsl */ `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: /* glsl */ `
+    uniform sampler2D tDiffuse;
+    uniform sampler2D tBayer;
+    uniform float uOpacity;
+    uniform vec2 uResolution;
+    varying vec2 vUv;
+
+    void main() {
+      vec4 color = texture2D(tDiffuse, vUv);
+
+      vec2 ditherCoord = gl_FragCoord.xy / 8.0;
+      float threshold = texture2D(tBayer, ditherCoord).r;
+
+      float luma = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+      float dithered = step(threshold, luma);
+
+      gl_FragColor = vec4(mix(color.rgb, vec3(dithered), uOpacity), color.a);
+    }
+  `,
+};
 
 const MAX_YAW = 0.8;
 const MAX_PITCH = 0.45;
 const MAX_SHIFT_X = 0.25;
 const MAX_SHIFT_Y = 0.15;
-const EASE = 0.02;
+const LERP_SPEED = 0.05;
 const FIT_PADDING = 1.2;
 
 export function WebGLBackground() {
@@ -38,6 +119,15 @@ export function WebGLBackground() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
 
+    // --- Post-processing ---
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bayerTex = createBayerTexture();
+    const ditherPass = new ShaderPass(DitherShader);
+    ditherPass.uniforms.tBayer.value = bayerTex;
+    composer.addPass(ditherPass);
+    composer.addPass(new OutputPass());
+
     // --- PMREM ---
     const pmrem = new THREE.PMREMGenerator(renderer);
 
@@ -59,6 +149,7 @@ export function WebGLBackground() {
       currShiftX = 0;
     let targetShiftY = 0,
       currShiftY = 0;
+
 
     // --- Helpers ---
     function loadEnv(url: string): Promise<THREE.Texture> {
@@ -128,10 +219,12 @@ export function WebGLBackground() {
 
     // --- Resize ---
     function resize() {
-      const rect = container.getBoundingClientRect();
+      const rect = container!.getBoundingClientRect();
       const w = Math.max(1, Math.floor(rect.width));
       const h = Math.max(1, Math.floor(rect.height));
       renderer.setSize(w, h, true);
+      composer.setSize(w, h);
+      ditherPass.uniforms.uResolution.value.set(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       if (bothLoaded) fitCameraToBoth(camera, modelLight, modelDark, FIT_PADDING);
@@ -241,15 +334,15 @@ export function WebGLBackground() {
       if (!running) return;
       rafId = requestAnimationFrame(animate);
 
-      currYaw += (targetYaw - currYaw) * EASE;
-      currPitch += (targetPitch - currPitch) * EASE;
-      currShiftX += (targetShiftX - currShiftX) * EASE;
-      currShiftY += (targetShiftY - currShiftY) * EASE;
+      currYaw += (targetYaw - currYaw) * LERP_SPEED;
+      currPitch += (targetPitch - currPitch) * LERP_SPEED;
+      currShiftX += (targetShiftX - currShiftX) * LERP_SPEED;
+      currShiftY += (targetShiftY - currShiftY) * LERP_SPEED;
 
       if (modelLight) applyTransforms(modelLight);
       if (modelDark) applyTransforms(modelDark);
 
-      renderer.render(scene, camera);
+      composer.render();
     }
 
     // --- Load assets ---
@@ -299,6 +392,9 @@ export function WebGLBackground() {
 
       envLight?.dispose();
       envDark?.dispose();
+      bayerTex.dispose();
+      composer.renderTarget1.dispose();
+      composer.renderTarget2.dispose();
       pmrem.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode) {
@@ -308,5 +404,16 @@ export function WebGLBackground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <div ref={containerRef} className={styles.container} aria-hidden />;
+  const bayerBg = useMemo(() => createBayerDataURL(), []);
+
+  return (
+    <>
+      <div
+        className={styles.ditherOverlay}
+        style={{ backgroundImage: `url(${bayerBg})` }}
+        aria-hidden
+      />
+      <div ref={containerRef} className={styles.container} aria-hidden />
+    </>
+  );
 }

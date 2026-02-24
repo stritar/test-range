@@ -10,7 +10,6 @@
   border: 1px dashed var(--sand-border);
   border-radius: var(--sand-radius);
   overflow: auto;
-  background: var(--sand-bg);
 }
 
 .content {
